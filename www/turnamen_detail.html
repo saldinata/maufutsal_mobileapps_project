@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-US" style="background-color: #f7f7f7;">
+  <head>
+    <!-- PHONE GAP META -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+
+    <!-- <meta content="IE=edge" http-equiv="x-ua-compatible"> -->
+    <!-- <meta content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport"> -->
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+
+    <!-- Fonts -->
+    <link href="css/familyfonts.css" rel='stylesheet' type='text/css'>
+
+    <!-- Icons -->
+    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" media="all" >
+
+    <!-- Styles -->
+    <link href="css/keyframes.css" rel="stylesheet" type="text/css">
+    <link href="css/materialize.min.css" rel="stylesheet" type="text/css">
+    <link href="css/materialicons.css" rel="stylesheet">
+    <link href="css/swiper.css" rel="stylesheet" type="text/css">
+    <link href="css/swipebox.min.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="phonegap.js"></script> 
+    <script type="text/javascript" src="cordova.js"></script>
+  </head>
+
+   <body>
+    <div class="m-scene">
+      <div>
+        <!-- Left Sidebar -->
+        <ul id="slide-out-left" class="side-nav collapsible purple-900-transparant-color">
+          <li>
+            <div class="sidenav-header purple-900-color">
+              <div class="nav-avatar">
+                <img class="circle avatar" src="img/user.jpg?4884491531235" alt="">
+                <div class="avatar-body">
+                  <h3 style="font-size:18px;" id="username"></h3>
+                  <p id="mail"></p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+              <a href="#" class="no-child" id="endapps">
+              <i class="material-icons md-18">directions_run</i> Akhiri Aplikasi</a>
+          </li>
+          <li>
+            <div class="collapsible-header">
+              <i class="material-icons md-18">build</i> Pengaturan
+              <span class="badge">
+                <i class="material-icons md-18">keyboard_arrow_down</i>
+              </span>
+            </div>
+            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
+              <ul class="collapsible">
+                <li>
+                  <a href="changepass.html" style="color:#fff;">Ganti Password</a>
+                  <a href="profile.html" style="color:#fff;">Data profil</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+              <a href="menu.html" class="no-child">
+              <i class="material-icons md-18">apps</i> Dashboard</a>
+          </li>
+
+          <li>
+            <div class="collapsible-header">
+              <i class="material-icons md-18">store_mall_directory</i> Reservasi Lapangan
+              <span class="badge">
+                <i class="material-icons md-18">keyboard_arrow_down</i>
+              </span>
+            </div>
+            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
+              <ul class="collapsible">
+                <li>
+                  <a href="list_reservation.html" style="color:#fff;">Mulai Reservasi</a>
+                  <a href="confirm_reservpayment.html" style="color:#fff;">Konfirmasi Pembayaran</a>
+                  <a href="history_reservation.html" style="color:#fff;">Catatan Reservasiku</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <div class="collapsible-header">
+              <i class="material-icons md-18">event_note</i> Turnamen
+              <span class="badge">
+                <i class="material-icons md-18">keyboard_arrow_down</i>
+              </span>
+            </div>
+            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
+              <ul class="collapsible">
+                <li>
+                  <a href="list_turnamen.html" style="color:#fff;">Mulai Daftar</a>
+                  <a href="confirm_turnamenpayment.html" style="color:#fff;">Konfirmasi Pembayaran</a>
+                  <a href="history_turnamen.html" style="color:#fff;">Catatan Turnamen</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+
+          <!-- <li>
+            <div class="collapsible-header">
+              <i class="material-icons md-18">group</i> Ajang Tanding
+              <span class="badge white">
+                <i class="material-icons md-18">keyboard_arrow_down</i>
+              </span>
+            </div>
+            <div class="collapsible-body">
+              <ul class="collapsible">
+                <li>
+                  <a href="#">Mulai Daftar</a>
+                  <a href="#">Konfirmasi Pembayaran</a>
+                  <a href="#">Catatan Ajang Tanding</a>
+                </li>
+              </ul>
+            </div>
+          </li> -->
+
+          <li>
+              <a href="privacy.html" class="no-child">
+              <i class="material-icons">comment</i> Ketentuan Privacy</a>
+          </li>
+        </ul>
+        <!-- End of Sidebars -->
+      </div> 
+
+
+      <div id="content" class="page" style="background-color: #f7f7f7;">
+        <!-- Toolbar -->
+        <div id="toolbar" class="green-800-color">
+          <a href="list_turnamen.html">
+            <div class="open-left" id="#" data-activates="slide-out-left">
+              <i class="material-icons">arrow_back</i>
+            </div>
+          </a>
+          <span class="title">Informasi Turnamen</span>
+        </div>
+
+        <!-- Hero Header -->
+        <div class="hero-header animated fadein" style="margin-top:0px;">
+            <div>
+              <div class="blog-fullwidth animated">
+                <div class="blog-image">
+                  <img src="img/5.jpg" alt="">
+                  <div class="opacity-overlay-top"></div>
+                </div>
+                <div class="blog-preview p-20">
+                  <h4 class="uppercase">It really makes no sense</h4>
+
+                  <div>
+                    <p style="font-size: 14px">This is dummy caption. It has been placed here solely to demonstrate the look and feel of finished, typeset text.</p>
+
+                    <p style="font-size: 14px">This is dummy caption. It has been placed here solely to demonstrate the look and feel of finished, typeset text.</p>
+
+                    <p style="font-size: 14px">This is dummy caption. It has been placed here solely to demonstrate the look and feel of finished, typeset text.</p>
+
+                    <p style="font-size: 14px">This is dummy caption. It has been placed here solely to demonstrate the look and feel of finished, typeset text.</p>
+                  </div>
+                </div>
+              </div>
+            </div>   
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+</html>
+
+<script src="js/tmplt/jquery-2.1.0.min.js"></script>
+<script src="js/tmplt/jquery.swipebox.min.js"></script>   
+<script src="js/tmplt/jquery.smoothState.min.js"></script> 
+<script src="js/tmplt/materialize.min.js"></script> 
+<script src="js/tmplt/swiper.min.js"></script>  
+<script src="js/tmplt/jquery.mixitup.min.js"></script>
+<script src="js/tmplt/masonry.min.js"></script>
+<script src="js/tmplt/chart.min.js"></script>
+<script src="js/tmplt/functions.js"></script>
+
+<script type="text/javascript">
+
+  document.addEventListener("deviceready", onDeviceReady, false);
+  document.addEventListener("backbutton", onBackButton, false);
+
+  var db    = window.openDatabase("maufutsal_mail", "1.0", "maufutsal_mail", 200000);
+  var url   = "";
+  var mail  = "";
+
+  if( screen.width <= 480 ) 
+  {
+    var url = "http://www.maufutsal.com/api_mobile/mosapi.php";
+  }
+  else
+  {
+    var url = "http://localhost/maufutsal_website/api_mobile/mosapi.php";
+  }
+
+
+  var initApps = function()
+  {
+
+  }
+
+
+  function onBackButton()
+  {
+    // do nothing
+  }
+
+  function onDeviceReady()
+  {
+    // do nothing
+  }
+
+  function errorCB(err) 
+  {
+    alert("Error processing SQL: "+err.code);
+  }
+
+  function successCB() 
+  {
+    //alert("success!");
+  }
+
+  $(document).ready(initApps);
+
+</script>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <!-- PHONE GAP META -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:" />
+
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    
+    <!-- Fonts -->
+    <link href="css/familyfonts.css?4884491531235" rel='stylesheet' type='text/css'>
+
+    <!-- Icons -->
+    <link href="css/ionicons.min.css?4884491531235" rel="stylesheet" type="text/css" media="all" >
+
+    <!-- Styles -->
+    <link href="css/keyframes.css?4884491531235" rel="stylesheet" type="text/css">
+    <link href="css/materialize.min.css?4884491531235" rel="stylesheet" type="text/css">
+    <link href="css/materialicons.css?4884491531235" rel="stylesheet">
+    <link href="css/swiper.css?4884491531235" rel="stylesheet" type="text/css">
+    <link href="css/swipebox.min.css?4884491531235" rel="stylesheet" type="text/css">
+    <link href="css/style.css?4884491531235" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="phonegap.js"></script> 
+    <script type="text/javascript" src="cordova.js"></script>
+
+  </head>
+
+  <body onload="onLoad()" style="color:#fff;">
+    <div class="m-scene" id="main"> 
+    <!-- Main Container -->
+
+      <!-- Page Content -->
+      <div id="content" class="grey-blue login">
+
+        <!-- Toolbar -->
+        <div id="toolbar" class="tool-login grey-300-color" style="background: linear-gradient(rgba(4, 4, 4, 0.77), rgba(0, 0, 0, 0.77)), rgba(0, 0, 0, 0.77) url(img/soccer_ball.jpg);background-repeat: no-repeat;background-position: 10% 100%;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;
+    background-size: cover;">
+        </div>
+        
+        <!-- Main Content -->
+        <div class="login-form z-depth-1">
+
+          <!-- <h1>Maufutsal</h1> -->
+
+         <img src="img/logo.svg" style="display: block;max-width:60%;max-height:40%;width: auto;height:auto; margin :0 auto;padding-bottom: 0px;padding-top: 0px;"/>
+
+          <!-- <h1 style="font-size: 20px;color: #6a6a6a;padding-bottom: 8px;padding-top: 8px;background: rgb(241, 241, 241);border-radius: 10px;border: 2px solid #dfdfdf;}">
+          Buat Akun</h1> -->
+
+           <div class="input-field">
+            <i class="ion-android-person prefix"></i> 
+            <input class="validate" id="fullname" type="text" autocomplete="off"> 
+            <label for="fullname">Nama Lengkap</label>
+          </div>
+
+          <div class="input-field">
+            <i class="ion-android-mail prefix"></i> 
+            <input class="validate" id="email" type="email" autocomplete="off"> 
+            <label for="email">Alamat Email</label>
+          </div>
+
+          <div class="input-field" style="margin-bottom:20px;">
+            <i class="ion-android-lock prefix"></i> 
+            <input class="validate" id="pass" type="password" autocomplete="off"> 
+            <label for="pass">Kata kunci</label>
+          </div>
+
+          <span>Kategori Pengguna</span>
+          <br><br>
+
+          <div style="margin:0 auto;">
+            <input name="genre" type="radio" id="pljr" value="1" />
+            <label for="pljr">Pelajar</label>
+
+            <input name="genre" type="radio" id="mhs" value="2" />
+            <label for="mhs">Mahasiswa</label>
+
+            <input name="genre" type="radio" id="umum" value="3" />
+            <label for="umum">Umum</label>
+          </div>
+
+          <br><br>
+
+          <a class="waves-effect waves-light btn-large green-color width-100 m-b-7" id="reg_btn">Daftar</a> 
+
+          <a class="waves-effect waves-light btn-large black-gray-color width-100 m-b-20" href="#" id="login_btn">Login</a> 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script type="text/javascript" src="js/tmplt/jquery-2.1.0.min.js"></script>
+<script src="js/tmplt/jquery.swipebox.min.js"></script>   
+<script src="js/tmplt/jquery.smoothState.min.js"></script> 
+<script src="js/tmplt/materialize.min.js"></script> 
+<script src="js/tmplt/swiper.min.js"></script>  
+<script src="js/tmplt/jquery.mixitup.min.js"></script>
+<script src="js/tmplt/masonry.min.js"></script>
+<script src="js/tmplt/chart.min.js"></script>
+<script src="js/tmplt/functions.js"></script>
+ 
+
+<script type="text/Javascript">
+
+  document.addEventListener("deviceready",onDeviceReady, false);
+  document.addEventListener("backbutton", onBackButton, false);
+
+  var url   = "";
+  var genre = "";
+
+  if( screen.width <= 880 ) 
+  {
+    var url = "http://www.maufutsal.com/api_mobile/mosapi.php";
+  }
+  else
+  {
+    var url = "http://localhost/maufutsal_website/api_mobile/mosapi.php";
+  }
+
+  
+  var initApps = function()
+  {
+    $("#login_btn").click(redirectToLoginPage);
+    $("#reg_btn").click(storeRegData);
+  }
+
+
+  function onBackButton()
+  { 
+  }
+
+
+  function onDeviceReady()
+  {
+  }
+
+
+  function errorCB(err) 
+  {
+    alert("Error processing SQL: "+err.code);
+  }
+
+  function successCB() 
+  {
+  }
+
+  $(document).ready(initApps);
+
+
+  function redirectToLoginPage()
+  {
+    document.location.href="index.html";
+  }
+
+  function storeRegData()
+  {
+    var full_name = document.getElementById("fullname").value;
+    var email     = document.getElementById("email").value;
+    var password  = document.getElementById("pass").value;
+    var genre     = $('input[name="genre"]:checked').val();
+
+    $.ajax
+    ({
+      type        : "POST",
+      url         : url,
+      data        : "type=reqstoredatareg"+"&fullname="+full_name+"&email="+email+"&password="+password+"&genre="+genre,
+      dataType    : "JSON",
+      contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+      cache       : false,
+      success     : function(JSONObject)
+      {
+        for(var key in JSONObject)
+        {
+          if(JSONObject.hasOwnProperty(key))
+          {
+            if(JSONObject[key]["type"]==="resstoredatareg")
+            {
+              if(JSONObject[key]["found"]==="true")
+              {
+                alert("Alamat email telah terdaftar");
+              }
+              else
+              {
+                if(JSONObject[key]["status"]==="true")
+                {
+                  document.getElementById("fullname").value="";
+                  document.getElementById("email").value="";
+                  document.getElementById("pass").value="";
+                  $('input[name="genre"]').attr('checked', false);
+                  alert("Prosess registrasi berhasil");
+                }
+                else
+                {
+                  alert("Prosess registrasi tidak berhasil");
+                }
+              }
+            }
+          }
+        }
+      }
+    });
+    return false;
+  }
+
+
+  function storeRegistrationData()
+  {
+    $.ajax
+    ({
+
+    });
+    return false;
+  }
+</script>

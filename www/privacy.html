@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en-US" style="background-color: #f7f7f7;">
+  <head>
+    <!-- PHONE GAP META -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+
+    <!-- <meta content="IE=edge" http-equiv="x-ua-compatible"> -->
+    <!-- <meta content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport"> -->
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+
+    <!-- Fonts -->
+    <link href="css/familyfonts.css?4884491531235" rel='stylesheet' type='text/css'>
+
+    <!-- Icons -->
+    <link href="css/ionicons.min.css?4884491531235" rel="stylesheet" type="text/css" media="all" >
+
+    <!-- Styles -->
+    <link href="css/keyframes.css?4884491531235" rel="stylesheet" type="text/css">
+    <link href="css/materialize.min.css?4884491531235" rel="stylesheet" type="text/css">
+    <link href="css/materialicons.css?4884491531235" rel="stylesheet">
+    <link href="css/swiper.css?4884491531235" rel="stylesheet" type="text/css">
+    <link href="css/swipebox.min.css?4884491531235" rel="stylesheet" type="text/css">
+    <link href="css/style.css?4884491531235" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="phonegap.js?4884491531235"></script> 
+    <script type="text/javascript" src="cordova.js?4884491531235"></script>
+  </head>
+
+  <body>
+    <div class="m-scene">
+      <div>
+        <!-- Left Sidebar -->
+        <ul id="slide-out-left" class="side-nav collapsible purple-900-transparant-color">
+          <li>
+            <div class="sidenav-header purple-900-color">
+              <div class="nav-avatar">
+                <img class="circle avatar" src="img/user.jpg?4884491531235" alt="">
+                <div class="avatar-body">
+                  <h3 style="font-size:18px;" id="username"></h3>
+                  <p id="mail"></p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+              <a href="#" class="no-child" id="endapps">
+              <i class="material-icons md-18">directions_run</i> Akhiri Aplikasi</a>
+          </li>
+          <li>
+            <div class="collapsible-header">
+              <i class="material-icons md-18">build</i> Pengaturan
+              <span class="badge">
+                <i class="material-icons md-18">keyboard_arrow_down</i>
+              </span>
+            </div>
+            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
+              <ul class="collapsible">
+                <li>
+                  <a href="changepass.html" style="color:#fff;">Ganti Password</a>
+                  <a href="profile.html" style="color:#fff;">Data profil</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+              <a href="menu.html" class="no-child">
+              <i class="material-icons md-18">apps</i> Dashboard</a>
+          </li>
+
+          <li>
+            <div class="collapsible-header">
+              <i class="material-icons md-18">store_mall_directory</i> Reservasi Lapangan
+              <span class="badge">
+                <i class="material-icons md-18">keyboard_arrow_down</i>
+              </span>
+            </div>
+            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
+              <ul class="collapsible">
+                <li>
+                  <a href="list_reservation.html" style="color:#fff;">Mulai Reservasi</a>
+                  <a href="confirm_reservpayment.html" style="color:#fff;">Konfirmasi Pembayaran</a>
+                  <a href="history_reservation.html" style="color:#fff;">Catatan Reservasiku</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <div class="collapsible-header">
+              <i class="material-icons md-18">event_note</i> Turnamen
+              <span class="badge">
+                <i class="material-icons md-18">keyboard_arrow_down</i>
+              </span>
+            </div>
+            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
+              <ul class="collapsible">
+                <li>
+                  <a href="list_turnamen.html" style="color:#fff;">Mulai Daftar</a>
+                  <a href="confirm_turnamenpayment.html" style="color:#fff;">Konfirmasi Pembayaran</a>
+                  <a href="history_turnamen.html" style="color:#fff;">Catatan Turnamen</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+
+          <!-- <li>
+            <div class="collapsible-header">
+              <i class="material-icons md-18">group</i> Ajang Tanding
+              <span class="badge white">
+                <i class="material-icons md-18">keyboard_arrow_down</i>
+              </span>
+            </div>
+            <div class="collapsible-body">
+              <ul class="collapsible">
+                <li>
+                  <a href="#">Mulai Daftar</a>
+                  <a href="#">Konfirmasi Pembayaran</a>
+                  <a href="#">Catatan Ajang Tanding</a>
+                </li>
+              </ul>
+            </div>
+          </li> -->
+
+          <li>
+              <a href="privacy.html" class="no-child">
+              <i class="material-icons">comment</i> Ketentuan Privacy</a>
+          </li>
+        </ul>
+      </div> 
+
+
+      <div id="content" class="page" style="background-color: #f7f7f7;">
+        <!-- Toolbar -->
+        <div id="toolbar" class="green-800-color">
+          <div class="open-left" id="open-left" data-activates="slide-out-left">
+            <i class="ion-android-menu"></i>
+          </div>
+          <!--  <a href="list_turnamen.html">
+            <div class="open-left" id="#" data-activates="slide-out-left">
+              <i class="material-icons">arrow_back</i>
+            </div>
+          </a> -->
+          <span class="title">Kebijakan Privancy</span>
+        </div>
+
+        <!-- Hero Header -->
+        <div class="hero-header animated fadein" style="margin-top:0px;">
+            <div>
+              <div class="blog-fullwidth animated">
+                <!-- <div class="blog-image">
+                  <img src="img/5.jpg" alt="">
+                  <div class="opacity-overlay-top"></div>
+                </div> -->
+                <div class="blog-preview p-20">
+                  <!-- <h4 class="uppercase">Kebijakan Privasi</h4> -->
+
+                  <div>
+                    <p style="font-size: 10px">Kami menjaga privasi pelanggan dengan sangat baik. Perlindungan data adalah menyangkut kepercayaan dan privasi pelanggan sangatlah penting bagi kami. Mengumpulkan dan melindungi data melalui aplikasi kami sebagai mana kami definiskan dibawah , mohon Anda membaca kebijakan secara seksama untuk memastikan bahwa Anda memahami bagaimana ketentuan kebijakan privasi kami berlakukan : Kebijakan privasi ini disertakan sebagai bagian dari ketentuan penggunaan aplikasi kami. Kebijakan ini mencakup hal-hal sebagai berikut :</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Informasi yang kami kumpulkan</p>
+
+                    <p style="font-size: 10px">Informasi yang Anda berikan. Kami mengumpulkan informasi guna memberi layanan yang lebih baik kepada semua pelanggan kami. Contoh, layanan kami mengharuskan Anda mendaftar untuk mendapatkan akun maufutsal. Saat Anda melakukannnya, kami meminta informasi pribadi Anda, seperti nama, alamat, email, nomor telephone/handphone, nomor kartu tanda penduduk dan beberapa informasi lainnya. Semua itu akan kami simpan dalam satu akun Anda dengan tujuan agar Anda dapat memanfaatkan berbagai fitur yang kami tawarkan semaksimal mungkin.</p>
+
+                    <p style="font-size: 10px">Informasi log. Saat menggunakan layanan atau melihat fitur yang kami sediakan, maufutsal secara otomatis mengumpulkan dan menyimpan informasi log server, diantaranya : Informasi akun Anda dan Informasi tanggal login dan logout</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Penggunaan Informasi yang kami kumpulkan</p>
+
+                    <p style="font-size: 10px">Kami menggunakan informasi yang dikumpulkan hanya untuk menerima layanan dari maufutsal untuk melaksanakan proses transaksi reservasi lapangan futsal, mengajak lawan tanding, mengikuiti kompetisi, atau untuk mengakses layanan maufutsal, seperti :</p>
+
+                    <ul>
+                      <li style="font-size: 10px">Untuk internal, menyediakan layanan dan berkomunikasi dengan Anda</li>
+                      <li style="font-size: 10px">Untuk external, kami membagikan informasi Anda dengan pihak ketiga yang terlibat dengan kami untuk memberikan layanan atas nama kami, seperti promosi, memberi akses atau link ke situs-situ bisnis yang terafiliasi, dan lain-lain. Namun kami tidak akan menjual atau meminjamkan informasi Anda kepada pihak ketiga lainnya, kecuali kami meminta persetujuan Anda terlebih dahulu.</li>
+                    </ul>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Definisi</p>
+
+                    <p style="font-size: 10px"><q>Kami</q> berarti PT. JADI MANDIRI LAMTAMA, suatu perusahaan yang didirikan berdasarkan hukum Negara Republik Indonesia, dan mengembangkan sebuah aplikasi yang bernama maufutsal</p>
+
+                    <p style="font-size: 10px"><q>Aplikasi</q> berarti suatu aplikasi perangkat lunak yang telah kami kembangkan untuk suatu sarana dalam menemukan layanan dari pihak ketiga</p>
+
+                    <p style="font-size: 10px"><q>Layanan</q> berarti layanan penggunaan lapangan futsal yang ditawarkan oleh penyedia layanan melalui aplikasi yang mencakup (i) layanan penggunaan lapangan futsal, (ii) layanan event organizer</p>
+
+                    <p style="font-size: 10px"><q>Situs web</q> berarti situs web kami di www.maufutsal.com</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Keamanan</p>
+
+                    <p style="font-size: 10px">Kami tidak menjamin keamanan database kami dan kami juga tidak menjamin bahwa data yang anda berikan tidak akan ditahan/terganggu ketika sedang dikirimkan kepada kami. Setiap pengiriman informasi oleh anda kepada kami merupakan risiko anda sendiri. Anda tidak boleh mengungkapkan sandi anda kepada siapapun. Bagaimanapun efektifnya suatu teknologi, tidak ada sistem keamanan yang tidak dapat ditembus. Sebab pada saat anda melakukan browsing saat itu juga anda sedang dipantau.</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Penahanan Informasi yang Kami Kumpulkan</p>
+
+                    <p style="font-size: 10px">Kami akan menahan informasi anda hingga anda menghapus akun anda pada Aplikasi maufutsal.</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Perubahan atas Kebijakan Privasi ini</p>
+
+                    <p style="font-size: 10px">Kami dapat mengubah sewaktu-waktu Kebijakan Privasi ini untuk mencerminkan perubahan dalam kegiatan kami. Jika kami mengubah Kebijakan Privasi, kami akan memberitahu anda melalui email atau dengan cara pemberitahuan di Situs web 1 hari sebelum perubahan berlaku. Kami menghimbau anda untuk meninjau halaman ini secara berkala untuk mengetahui informasi terbaru tentang bagaimana ketentuan Kebijakan Privasi ini kami berlakukan.</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Kapan Kebijakan Privasi ini berlaku</p>
+
+                    <p style="font-size: 10px">Kebijakan Privasi kami berlaku untuk semua layanan yang ditawarkan oleh maufutsal dan afiliasinya, dan layanan yang ditawarkan di situs lain (seperti layanan periklanan kami), namun tidak berlaku untuk layanan yang memiliki kebijakan privasi terpisah yang tidak terkait dengan Kebijakan Privasi ini. Kebijakan Privasi kami tidak berlaku ke layanan yang ditawarkan oleh perusahaan atau individu lain, termasuk produk atau situs yang mungkin ditampilkan kepada Anda di hasil penelusuran, situs yang berisi layanan maufutsal, atau situs lain yang tertaut dari layanan kami. Kebijakan Privasi kami tidak meliputi praktik informasi perusahaan dan organisasi lain yang mengiklankan layanan kami.</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Kepatuhan dan kerja sama dengan pihak berwenang</p>
+
+                    <p style="font-size: 10px">Kami meninjau kepatuhan kami dengan Kebijakan Privasi secara rutin. Kami juga mematuhi beberapa kerangka kerja peraturan diri. Setelah menerima keluhan tertulis resmi, kami akan menghubungi orang yang mengirimkan keluhan guna mengambil tindak lanjut. Kami bekerjasama dengan otoritas hukum yang semestinya, termasuk otoritas perlindungan data lokal, untuk menyelesaikan segala keluhan terkait pengalihan data pribadi yang tidak dapat kami selesaikan dengan pengguna secara langsung.</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Keamanan dan Proteksi Informasi Personal Anda</p>
+
+                    <p style="font-size: 10px">Aplikasi dijamin dan dienkripsi menggunakan teknologi Secure Socket Layer (SSL). Kami mengambil beberapa langkah untuk melindungi informasi pribadi Anda di dalam fasilitas kami dari penggunaan dan akses yang tidak sah. Walaupun kami sudah menggunakan perlindungan standar untuk melindungi informasi pribadi anda, kami tidak dapat menjamin keamanan yang lengkap dari informasi pribadi anda. Kami juga melindungi informasi pribadi anda melalui kontrol password dan kami meminta anda untuk menjaga kerahasiaannya. Kami tidak akan pernah meminta anda untuk memberikan password anda kepada kami, dan anda dapat merubah password anda setiap saat lewat pengaturan "edit profil / pengaturan".</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Situs Pihak Ketiga</p>
+
+                    <p style="font-size: 10px">Website kami berisi link ke website-website lain yang dioperasikan oleh perusahaan lain. Kami tidak membagikan informasi personal anda dengan website-website tersebut (kecuali jika kami telah meminta persetujuan anda seperti yang telah disebutkan di atas) dan kami tidak bertanggung jawab dengan kebijakan privasi website tersebut.</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Member</p>
+
+                    <p style="font-size: 10px">Member adalah pengguna lapangan futsal yang dapat melakukan reservasi lapangan futsal melalui aplikasi maufutsal dengan terlebih dahulu mendaftarkan diri serta melangkapi data-data pribadi. Pendaftaran member tidak perlu melalui otorisasi oleh administrator maufutsal.</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Transaksi</p>
+
+                    <p style="font-size: 10px">Transaksi adalah sebuah kegiatan yang dilakukan oleh member (pemain futsal) untuk memesan atau reservasi lapangan, juga untuk mendaftar sebagai peserta kompetisi yang bekerjasama dengan maufutsal.</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Pembatalan transaksi</p>
+
+                    <p style="font-size: 10px">Penetapan mekanisme refund (pengembalian uang) oleh maufutsal kepada calon pengguna lapangan atau calon peserta kompetisi yang membatalkan penggunaan lapangan atau keikutsertaannya pada sebuah kompetisi tidak dapat dilayani oleh maufutsal.</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Pemilik atau manajemen lapangan futsal</p>
+
+                    <p style="font-size: 10px">Pemilik atau manajemen lapangan futsal adalah lembaga, institusi atau individu yang memiliki lapangan futsal dan telah bekerjasama dengan maufutsal. Pemilik atau manajemen wajib mendaftarkan diri serta menanda tangan surat perjanjian kerjasama agar lapangan futsalnya dapat direservasi melalui aplikasi maufutsal.</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Agen</p>
+
+                    <p style="font-size: 10px">Agen adalah sebuah institusi, lembaga atau individu yang bekerjasama dengan maufutsal untuk melakukan bisnis penjualan voucher atau tiket bermain futsal. Agen harus mendaftarkan diri dan menanda tangani surat perjanjian kerjasama untuk menjadi agensi maufutsal.</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Event Organizer</p>
+
+                    <p style="font-size: 10px">Event Organizer adalah sebuah lembanga atau institusi yang memiliki usaha sesuai dengan hukum yang berlaku di Negara Republik Indonesia, yang ingin bekerjasama dengan maufutsal untuk melakukan sebuah kegiatan yang berhubungan dengan layanan aplikasi maufutsal. Setiap Event Organizer wajib mendaftarkan diri dan menandatangai surat perjanjian kerjasama.</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Lain-lain</p>
+
+                    <p style="font-size: 10px">Hukum yang mengatur dan yurisdiksi. Kebijakan Privasi ini diatur oleh dan untuk ditafsirkan dalam hukum Negara Republik Indonesia. Setiap dan seluruh sengketa yang timbul dari kebijakan privasi ini akan diatur oleh yurisdiksi eksklusif dari Pengadilan Negeri Jakarta.</p>
+
+                    <p style="font-weight: 300;color: #494949;padding-top: 2px;">Cara untuk Menghubungi Kami</p>
+
+                    <p style="font-size: 10px">Jika Anda memiliki pertanyaan lebih lanjut tentang privasi dan keamanan informasi Anda dan ingin memperbarui atau menghapus data Anda maka silakan hubungi kami di: info@maufutsal.com atau telepon ke: 0853 5989 9998 / 0898 8000-700</p>
+
+                  </div>
+                </div>
+              </div>
+            </div>   
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+</html>
+
+<script src="js/tmplt/jquery-2.1.0.min.js"></script>
+<script src="js/tmplt/jquery.swipebox.min.js"></script>   
+<script src="js/tmplt/jquery.smoothState.min.js"></script> 
+<script src="js/tmplt/materialize.min.js"></script> 
+<script src="js/tmplt/swiper.min.js"></script>  
+<script src="js/tmplt/jquery.mixitup.min.js"></script>
+<script src="js/tmplt/masonry.min.js"></script>
+<script src="js/tmplt/chart.min.js"></script>
+<script src="js/tmplt/functions.js"></script>
+
+<script type="text/javascript">
+
+  document.addEventListener("deviceready", onDeviceReady, false);
+  document.addEventListener("backbutton", onBackButton, false);
+
+  var db        = window.openDatabase("maufutsal_mail", "1.0", "maufutsal_mail", 200000);
+  var url       = "";
+  var mail      = "";
+  var username  = "";
+
+  if( screen.width <= 480 ) 
+  {
+    var url = "http://www.maufutsal.com/api_mobile/mosapi.php";
+  }
+  else
+  {
+    var url = "http://localhost/maufutsal_website/api_mobile/mosapi.php";
+  }
+
+
+  var initApps = function()
+  {
+    fetchEmail();
+    $("#endapps").click(exitApps);
+  }
+
+
+  function onBackButton()
+  {
+  }
+
+  function onDeviceReady()
+  {
+  }
+
+  function errorCB(err) 
+  {
+    alert("Error processing SQL: "+err.code);
+  }
+
+  function successCB() 
+  {
+  }
+
+  function exitApps()
+  {
+    db.transaction(clearAllTable, errorCB, successCB);
+  }
+
+  $(document).ready(initApps);
+
+  function fetchEmail()
+  {
+    db.transaction
+    (
+      function (tx)
+      {
+        tx.executeSql
+        (
+          'SELECT mail FROM maumail',
+          [],
+          function(tx,results)
+          {
+            var len = results.rows.length;
+            if(len>0)
+            {
+              for (var i = 0; i < len; i++) 
+              {
+                mail = results.rows.item(i)['mail'];
+                fetchInformation();
+                $("#mail").html(mail); 
+              }
+            }
+          }, errorCB
+        );
+      },errorCB,successCB
+    );
+  }
+
+  function fetchInformation()
+  {
+    $.ajax
+    ({
+      type        : "POST",
+      url         : url,
+      data        : "type=reqgetinfouser"+"&mail="+mail,
+      dataType    : "JSON",
+      contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+      cache       : false,
+      success     : function(JSONObject)
+      {
+        for(var key in JSONObject)
+        {
+          if(JSONObject.hasOwnProperty(key))
+          {
+            if(JSONObject[key]["type"]==="resgetinfouser")
+            {
+              username = JSONObject[key]["name"];
+              $("#username").html(username);
+            }
+          }
+        }
+      }
+    });
+    return false;
+  }
+
+
+  function clearAllTable(tx)
+  {
+    tx.executeSql('DROP TABLE IF EXISTS maumail');
+    tx.executeSql('DROP TABLE IF EXISTS courtregtbl');
+    tx.executeSql('DROP TABLE IF EXISTS booktransaction');
+    tx.executeSql('DROP TABLE IF EXISTS courtregtbl');
+    tx.executeSql('DROP TABLE IF EXISTS compdata');
+    tx.executeSql('DROP TABLE IF EXISTS pagedata');
+
+    document.location.href="index.html";
+  }
+
+</script>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <!-- PHONE GAP META -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+
+    <!-- <meta content="IE=edge" http-equiv="x-ua-compatible"> -->
+    <!-- <meta content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport"> -->
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    
+    <!-- Fonts -->
+    <link href="css/familyfonts.css?4884491531235" rel='stylesheet' type='text/css'>
+
+    <!-- Icons -->
+    <link href="css/ionicons.min.css?4884491531235" rel="stylesheet" type="text/css" media="all" >
+
+    <!-- Styles -->
+    <link href="css/keyframes.css?4884491531235" rel="stylesheet" type="text/css">
+    <link href="css/materialize.min.css?4884491531235" rel="stylesheet" type="text/css">
+    <link href="css/materialicons.css?4884491531235" rel="stylesheet">
+    <link href="css/swiper.css?4884491531235" rel="stylesheet" type="text/css">
+    <link href="css/swipebox.min.css?4884491531235" rel="stylesheet" type="text/css">
+    <link href="css/style.css?4884491531235" rel="stylesheet" type="text/css">
+
+
+  </head>
+
+   <body>
+    <div class="m-scene">
+      <div>
+        <!-- Left Sidebar -->
+        <ul id="slide-out-left" class="side-nav collapsible purple-900-transparant-color">
+          <li>
+            <div class="sidenav-header purple-900-color">
+              <div class="nav-avatar">
+                <img class="circle avatar" src="img/user.jpg?4884491531235" alt="">
+                <div class="avatar-body">
+                  <h3 style="font-size:18px;" id="username"></h3>
+                  <p id="mail"></p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+              <a href="#" class="no-child" id="endapps">
+              <i class="material-icons md-18">directions_run</i> Akhiri Aplikasi</a>
+          </li>
+          <li>
+            <div class="collapsible-header">
+              <i class="material-icons md-18">build</i> Pengaturan
+              <span class="badge">
+                <i class="material-icons md-18">keyboard_arrow_down</i>
+              </span>
+            </div>
+            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
+              <ul class="collapsible">
+                <li>
+                  <a href="changepass.html" style="color:#fff;">Ganti Password</a>
+                  <a href="profile.html" style="color:#fff;">Data profil</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+              <a href="menu.html" class="no-child">
+              <i class="material-icons md-18">apps</i> Dashboard</a>
+          </li>
+
+          <li>
+            <div class="collapsible-header">
+              <i class="material-icons md-18">store_mall_directory</i> Reservasi Lapangan
+              <span class="badge">
+                <i class="material-icons md-18">keyboard_arrow_down</i>
+              </span>
+            </div>
+            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
+              <ul class="collapsible">
+                <li>
+                  <a href="list_reservation.html" style="color:#fff;">Mulai Reservasi</a>
+                  <a href="confirm_reservpayment.html" style="color:#fff;">Konfirmasi Pembayaran</a>
+                  <a href="history_reservation.html" style="color:#fff;">Catatan Reservasiku</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <div class="collapsible-header">
+              <i class="material-icons md-18">event_note</i> Turnamen
+              <span class="badge">
+                <i class="material-icons md-18">keyboard_arrow_down</i>
+              </span>
+            </div>
+            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
+              <ul class="collapsible">
+                <li>
+                  <a href="list_turnamen.html" style="color:#fff;">Mulai Daftar</a>
+                  <a href="confirm_turnamenpayment.html" style="color:#fff;">Konfirmasi Pembayaran</a>
+                  <a href="history_turnamen.html" style="color:#fff;">Catatan Turnamen</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+
+          <!-- <li>
+            <div class="collapsible-header">
+              <i class="material-icons md-18">group</i> Ajang Tanding
+              <span class="badge white">
+                <i class="material-icons md-18">keyboard_arrow_down</i>
+              </span>
+            </div>
+            <div class="collapsible-body">
+              <ul class="collapsible">
+                <li>
+                  <a href="#">Mulai Daftar</a>
+                  <a href="#">Konfirmasi Pembayaran</a>
+                  <a href="#">Catatan Ajang Tanding</a>
+                </li>
+              </ul>
+            </div>
+          </li> -->
+
+          <li>
+              <a href="privacy.html" class="no-child">
+              <i class="material-icons">comment</i> Ketentuan Privacy</a>
+          </li>
+        </ul>
+        <!-- End of Sidebars -->
+      </div> 
+
+      <div id="content" class="page">
+        <!-- Toolbar -->
+        <div id="toolbar" class="green-800-color">
+          <div class="open-left" id="open-left" data-activates="slide-out-left">
+            <i class="ion-android-menu"></i>
+          </div>
+          <span class="title">Profile</span>
+        </div>
+      
+        <!-- Hero Header -->
+        <div class="hero-header scrollable-avatar">
+          <img src="img/profile.svg?4884491531235" alt="">
+
+          <!-- Floating Avatar -->
+          <div class="floating-avatar circle z-depth-1">
+            <img class="circle" src="img/user.jpg?4884491531235" alt="">
+          </div>
+        </div>
+
+        <!-- Activity Content -->
+        <div class="animated">
+          <div class="container activity">
+            <div class="vertical-line-spacer"></div>
+            <div class="row">
+              <div class="col s12">
+                <div class="contact">
+                  <span class="date" style="font-size:12px;color:#000;">Nama :</span><br>
+                  <span class="date" style="font-size:15px;padding-top: 18px;color:#000;">
+                    <strong>Saldinata B.</strong>
+                  </span>
+                  <div class="dot z-depth-1">
+                  </div>
+                </div>
+
+                <div class="contact">
+                  <span class="date" style="font-size:12px;color:#000;">Email :</span><br>
+                  <span class="date" style="font-size:15px;padding-top: 18px;color:#000;"> 
+                    <strong>saldinata.ardani@gmail.com</strong>
+                  </span>
+                  <div class="dot z-depth-1">
+                  </div>
+                </div>
+
+                <div class="contact">
+                  <span class="date" style="font-size:12px;color:#000;">Genre :</span><br>
+                  <span class="date" style="font-size:15px;padding-top: 18px;color:#000;">
+                    <strong>Mahasiswa</strong>
+                  </span>
+                  <div class="dot z-depth-1">
+                  </div>
+                </div>
+
+
+                <!-- Floating Action Button -->
+                <div class="floating-button scrollable-fab animated bouncein delay-1" style="right:20px;position: fixed;bottom: 20px;">
+                  <a href="checkout.html" class="btn-floating btn-large waves-effect waves-light purple-color btn z-depth-1"">
+                    <!-- <i class="ion-android-cart"></i> -->
+                    <i class="material-icons md-32">create</i>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div> 
+    </div>
+  </body>
+</html>
+
+<script src="js/tmplt/jquery-2.1.0.min.js"></script>
+<script src="js/mftsl/loadhead.js"></script>
+<script src="js/tmplt/jquery.swipebox.min.js"></script>   
+<script src="js/tmplt/jquery.smoothState.min.js"></script> 
+<script src="js/tmplt/materialize.min.js"></script> 
+<script src="js/tmplt/swiper.min.js"></script>  
+<script src="js/tmplt/jquery.mixitup.min.js"></script>
+<script src="js/tmplt/masonry.min.js"></script>
+<script src="js/tmplt/chart.min.js"></script>
+<script src="js/tmplt/functions.js"></script>
+
+<script type="text/javascript">
+
+  document.addEventListener("backbutton", onBackButton, false);
+  document.addEventListener("deviceready", onDeviceReady, false);
+
+  var db        = window.openDatabase("maufutsal_mail", "1.0", "maufutsal_mail", 200000);
+  var url       = "";
+  var mail      = "";
+  var username  = "";
+
+  if( screen.width <= 880 ) 
+  {
+    var url = "http://www.maufutsal.com/api_mobile/mosapi.php";
+  }
+  else
+  {
+    var url = "http://localhost/maufutsal_website/api_mobile/mosapi.php";
+  }
+
+  function onBackButton()
+  {
+  }
+
+  function onDeviceReady()
+  {
+    // do nothing
+  }
+
+  function errorCB(err) 
+  {
+    alert("Error processing SQL: "+err.code);
+  }
+
+  function successCB() 
+  {
+    //alert("success!");
+  }
+
+  function exitApps()
+  {
+    db.transaction(clearAllTable, errorCB, successCB);
+  }
+
+  var initApps = function()
+  {
+    fetchEmail();
+    $("#endapps").click(exitApps);
+  };
+
+  $(document).ready(initApps);
+
+
+  function fetchEmail()
+  {
+    db.transaction
+    (
+      function (tx)
+      {
+        tx.executeSql
+        (
+          'SELECT mail FROM maumail',
+          [],
+          function(tx,results)
+          {
+            var len = results.rows.length;
+            if(len>0)
+            {
+              for (var i = 0; i < len; i++) 
+              {
+                mail = results.rows.item(i)['mail'];
+                fetchInformation();
+                $("#mail").html(mail); 
+              }
+            }
+          }, errorCB
+        );
+      },errorCB,successCB
+    );
+  }
+
+  function fetchInformation()
+  {
+    $.ajax
+    ({
+      type        : "POST",
+      url         : url,
+      data        : "type=reqgetinfouser"+"&mail="+mail,
+      dataType    : "JSON",
+      contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+      cache       : false,
+      success     : function(JSONObject)
+      {
+        for(var key in JSONObject)
+        {
+          if(JSONObject.hasOwnProperty(key))
+          {
+            if(JSONObject[key]["type"]==="resgetinfouser")
+            {
+              username = JSONObject[key]["name"];
+              $("#username").html(username);
+            }
+          }
+        }
+      }
+    });
+    return false;
+  }
+
+  function clearAllTable(tx)
+  {
+    tx.executeSql('DROP TABLE IF EXISTS maumail');
+    tx.executeSql('DROP TABLE IF EXISTS courtregtbl');
+    tx.executeSql('DROP TABLE IF EXISTS booktransaction');
+    tx.executeSql('DROP TABLE IF EXISTS courtregtbl');
+    tx.executeSql('DROP TABLE IF EXISTS compdata');
+    tx.executeSql('DROP TABLE IF EXISTS pagedata');
+
+    document.location.href="index.html";
+  }
+
+
+</script>

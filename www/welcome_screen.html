@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+     <!-- PHONE GAP META -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+
+    <!-- Fonts -->
+    <link href="css/familyfonts.css" rel='stylesheet' type='text/css'>
+
+    <!-- Icons -->
+    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" media="all" >
+
+    <!-- Styles -->
+    <link href="css/keyframes.css" rel="stylesheet" type="text/css">
+    <link href="css/materialize.min.css" rel="stylesheet" type="text/css">
+    <link href="css/swiper.css" rel="stylesheet" type="text/css">
+    <link href="css/swipebox.min.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="phonegap.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+  </head>
+
+  <body>
+    <div class="m-scene"> <!-- Main Container -->
+
+      <!-- Sidebars -->
+
+      <!-- Page Content -->
+      <div id="content" class="bg-v-2">
+
+        <!-- Toolbar -->
+        <div id="toolbar" class="green-800-color">
+          <div class="open-left" data-activates="slide-out-left" style="height:0px;">
+          </div>
+          <span class="title">Maufutsal</span>
+          <div class="open-right" id="skip" data-activates="slide-out">
+            <span style="color:#fff;">Skip</span>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="animated fadeinup">
+
+          <!-- Slider -->
+          <div class="swiper-container slider-sliced">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="slider-bottom-right valign-wrapper">
+                  <div class="valign center-align width-100 p-b-5em" style="padding-top: 10px;padding-bottom: 3em !important;">
+                    <h2 style="color:#0c9b1c;">Maufutsal</h2>
+                    <p style="color:#7c7c7c;">Selamat bergabung dan menggunakan layanan Maufutsal</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="slider-bottom-left valign-wrapper">
+                  <div class="valign left-align width-100 p-b-5em" style="padding-top: 10px;padding-bottom: 3em !important;">
+                    <h2 style="color:#0c9b1c;">Resevasi</h2>
+                    <p style="color:#7c7c7c;">Temukan lokasi, harga, dan informasi lapangan favorite kamu</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="slider-bottom-right valign-wrapper">
+                  <div class="valign right-align width-100 p-b-5em" style="padding-top: 10px;padding-bottom: 3em !important;">
+                    <h2 style="color: #0c9b1c;">Turnamen</h2>
+                    <p style="color: #7c7c7c;">Informasi pertandingan terkini dan terupdate mulai jadwal hingga score</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="slider-bottom-left valign-wrapper">
+                  <div class="valign left-align width-100 p-b-5em" style="padding-top: 10px;padding-bottom: 3em !important;">
+                    <h2 style="color: #0c9b1c;">Cari Lawan</h2>
+                    <p style="color: #7c7c7c;">Bermain futsal menjadi seru dengan lawan tanding baru setiap harinya.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+          </div>
+          <!-- End of Slider -->
+
+        </div> <!-- End of Main Contents -->
+      </div> <!-- End of Page Content -->
+    </div> <!-- End of Page Container -->
+
+    <script src="js/tmplt/jquery-2.1.0.min.js"></script>
+    <script src="js/tmplt/jquery.swipebox.min.js"></script>
+    <script src="js/tmplt/jquery.smoothState.min.js"></script>
+    <script src="js/tmplt/materialize.min.js"></script>
+    <script src="js/tmplt/swiper.min.js"></script>
+    <script src="js/tmplt/jquery.mixitup.min.js"></script>
+    <script src="js/tmplt/masonry.min.js"></script>
+    <script src="js/tmplt/chart.min.js"></script>
+    <script src="js/tmplt/functions.js"></script>
+  </body>
+</html>
+
+
+<script type="text/Javascript">
+  document.addEventListener("deviceready", onDeviceReady, false);
+  document.addEventListener("backbutton", onBackButton, false);
+
+  var db    = window.openDatabase("maufutsal_mail", "1.0", "maufutsal_mail", 200000);
+  var mail  = "";
+
+  var initApps = function()
+  {
+    fetchMail();
+    $("#skip").click(skipRedirect);
+  }
+
+  function onBackButton()
+  {
+  }
+
+  if( screen.width <= 880 )
+  {
+    var url = "http://www.maufutsal.com/api_mobile/mosapi.php";
+  }
+  else
+  {
+    var url = "http://localhost/maufutsal_website/api_mobile/mosapi.php";
+  }
+
+  function onDeviceReady()
+  {
+  }
+
+  function fetchMail()
+  {
+    db.transaction
+    (
+      function (tx)
+      {
+        tx.executeSql
+        (
+          'SELECT mail FROM maumail',
+          [],
+          function(tx,results)
+          {
+            var len = results.rows.length;
+            if(len>0)
+            {
+              for (var i = 0; i < len; i++)
+                {
+                  mail = results.rows.item(i)['mail'];
+                }
+            }
+          }, errorCB
+        );
+      },errorCB,successCB
+     );
+  }
+
+  function errorCB(err)
+  {
+    alert("Error processing SQL: "+err.code);
+  }
+
+  function successCB()
+  {
+    //alert("success!");
+  }
+
+  $(document).ready(initApps);
+
+  function skipRedirect()
+  {
+    $.ajax
+    ({
+        type        : "POST",
+        url         : url,
+        data        : "type=reqchangeflagft"+"&mail="+mail,
+        dataType    : "JSON",
+        contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+        cache       : "false",
+        success     : function (JSONObject)
+        {
+          for(var key in JSONObject)
+          {
+            if(JSONObject.hasOwnProperty(key))
+            {
+              if(JSONObject[key]["type"]==="reschangeflagft")
+              {
+                if(JSONObject[key]["result"]==="true")
+                {
+                  document.location.href="menu.html";
+                }
+                else
+                {
+                  alert("Sepertinya terjadi kesalahan dalam system");
+                }
+              }
+            }
+          }
+        }
+    });
+    return false;
+  }
+</script>

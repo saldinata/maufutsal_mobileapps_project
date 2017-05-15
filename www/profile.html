@@ -11,7 +11,7 @@
     <!-- <meta content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport"> -->
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="yes" name="apple-touch-fullscreen">
-    
+
     <!-- Fonts -->
     <link href="css/familyfonts.css?4884491531235" rel='stylesheet' type='text/css'>
 
@@ -29,15 +29,16 @@
 
   </head>
 
-   <body>
+   <body style="background-color:#dbdbdb;">
     <div class="m-scene">
       <div>
         <!-- Left Sidebar -->
-        <ul id="slide-out-left" class="side-nav collapsible purple-900-transparant-color">
+        <ul id="slide-out-left" class="side-nav collapsible" style="background-color: rgb(33, 74, 40); width: 250px;">
           <li>
-            <div class="sidenav-header purple-900-color">
+            <div class="sidenav-header" style="background-color: rgb(46, 125, 50) !important">
               <div class="nav-avatar">
-                <img class="circle avatar" src="img/user.jpg?4884491531235" alt="">
+                 <p style="margin-top: 10px;height: 54px;width: 54px;border-radius: 100%;background-color: rgb(121, 191, 17);padding-left: 8%;padding-top: 1%;color: #F5F5F5;font-size: 30px;margin-left: 10px;margin-bottom: 10px;box-shadow: 2px 2px 3px 0px #0c621b;" id="initial"></p>
+                <!-- <img class="circle avatar" src="img/user.jpg?4884491531235" alt=""> -->
                 <div class="avatar-body">
                   <h3 style="font-size:18px;" id="username"></h3>
                   <p id="mail"></p>
@@ -51,17 +52,17 @@
               <i class="material-icons md-18">directions_run</i> Akhiri Aplikasi</a>
           </li>
           <li>
-            <div class="collapsible-header">
+            <div class="collapsible-header" style="padding: 5%;">
               <i class="material-icons md-18">build</i> Pengaturan
               <span class="badge">
                 <i class="material-icons md-18">keyboard_arrow_down</i>
               </span>
             </div>
-            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
+            <div class="collapsible-body" style="background-color: rgb(37, 80, 44);">
               <ul class="collapsible">
                 <li>
-                  <a href="changepass.html" style="color:#fff;">Ganti Password</a>
-                  <a href="profile.html" style="color:#fff;">Data profil</a>
+                  <a href="changepass.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Ganti Password</a>
+                  <a href="profile.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Data profil</a>
                 </li>
               </ul>
             </div>
@@ -73,59 +74,41 @@
           </li>
 
           <li>
-            <div class="collapsible-header">
+            <div class="collapsible-header" style="padding: 5%;">
               <i class="material-icons md-18">store_mall_directory</i> Reservasi Lapangan
               <span class="badge">
                 <i class="material-icons md-18">keyboard_arrow_down</i>
               </span>
             </div>
-            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
+            <div class="collapsible-body" style="background-color: rgb(37, 80, 44);">
               <ul class="collapsible">
                 <li>
-                  <a href="list_reservation.html" style="color:#fff;">Mulai Reservasi</a>
-                  <a href="confirm_reservpayment.html" style="color:#fff;">Konfirmasi Pembayaran</a>
-                  <a href="history_reservation.html" style="color:#fff;">Catatan Reservasiku</a>
+                  <a href="list_reservation.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Mulai Reservasi</a>
+                  <a href="confirm_reservpayment.html" style="color:#fff;    margin: 0 16% 0 10%;font-size: 95%;">Konfirmasi Pembayaran</a>
+                  <a href="history_reservation.html" style="color:#fff;    margin: 0 16% 0 10%;font-size: 95%;">Catatan Reservasiku</a>
                 </li>
               </ul>
             </div>
           </li>
 
           <li>
-            <div class="collapsible-header">
+            <div class="collapsible-header" style="padding: 5%;">
               <i class="material-icons md-18">event_note</i> Turnamen
               <span class="badge">
                 <i class="material-icons md-18">keyboard_arrow_down</i>
               </span>
             </div>
-            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
+            <div class="collapsible-body" style="background-color: rgb(37, 80, 44);">
               <ul class="collapsible">
                 <li>
-                  <a href="list_turnamen.html" style="color:#fff;">Mulai Daftar</a>
-                  <a href="confirm_turnamenpayment.html" style="color:#fff;">Konfirmasi Pembayaran</a>
-                  <a href="history_turnamen.html" style="color:#fff;">Catatan Turnamen</a>
+                  <a href="list_turnamen.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Mulai Daftar</a>
+                  <a href="confirm_turnamenpayment.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Konfirmasi Pembayaran</a>
+                  <a href="history_turnamen.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Catatan Turnamen</a>
                 </li>
               </ul>
             </div>
           </li>
 
-
-          <!-- <li>
-            <div class="collapsible-header">
-              <i class="material-icons md-18">group</i> Ajang Tanding
-              <span class="badge white">
-                <i class="material-icons md-18">keyboard_arrow_down</i>
-              </span>
-            </div>
-            <div class="collapsible-body">
-              <ul class="collapsible">
-                <li>
-                  <a href="#">Mulai Daftar</a>
-                  <a href="#">Konfirmasi Pembayaran</a>
-                  <a href="#">Catatan Ajang Tanding</a>
-                </li>
-              </ul>
-            </div>
-          </li> -->
 
           <li>
               <a href="privacy.html" class="no-child">
@@ -133,7 +116,7 @@
           </li>
         </ul>
         <!-- End of Sidebars -->
-      </div> 
+      </div>
 
       <div id="content" class="page">
         <!-- Toolbar -->
@@ -143,13 +126,13 @@
           </div>
           <span class="title">Profile</span>
         </div>
-      
+
         <!-- Hero Header -->
         <div class="hero-header scrollable-avatar">
           <img src="img/profile.svg?4884491531235" alt="">
 
           <!-- Floating Avatar -->
-          <div class="floating-avatar circle z-depth-1">
+          <div class="floating-avatar circle">
             <img class="circle" src="img/user.jpg?4884491531235" alt="">
           </div>
         </div>
@@ -162,35 +145,35 @@
               <div class="col s12">
                 <div class="contact">
                   <span class="date" style="font-size:12px;color:#000;">Nama :</span><br>
-                  <span class="date" style="font-size:15px;padding-top: 18px;color:#000;">
-                    <strong>Saldinata B.</strong>
+                  <span class="date" style="font-size:13px;padding-top: 18px;color:#000;">
+                    <strong id="name_profile"></strong>
                   </span>
-                  <div class="dot z-depth-1">
+                  <div class="dot" syle="border: 4px solid #26bb86;">
                   </div>
                 </div>
 
                 <div class="contact">
                   <span class="date" style="font-size:12px;color:#000;">Email :</span><br>
-                  <span class="date" style="font-size:15px;padding-top: 18px;color:#000;"> 
-                    <strong>saldinata.ardani@gmail.com</strong>
+                  <span class="date" style="font-size:13px;padding-top: 18px;color:#000;">
+                    <strong id="mail_profile"></strong>
                   </span>
-                  <div class="dot z-depth-1">
+                  <div class="dot" syle="border: 4px solid #26bb86;">
                   </div>
                 </div>
 
                 <div class="contact">
                   <span class="date" style="font-size:12px;color:#000;">Genre :</span><br>
-                  <span class="date" style="font-size:15px;padding-top: 18px;color:#000;">
-                    <strong>Mahasiswa</strong>
+                  <span class="date" style="font-size:13px;padding-top: 18px;color:#000;">
+                    <strong id="cat_profile"></strong>
                   </span>
-                  <div class="dot z-depth-1">
+                  <div class="dot" syle="border: 4px solid #26bb86;">
                   </div>
                 </div>
 
 
                 <!-- Floating Action Button -->
                 <div class="floating-button scrollable-fab animated bouncein delay-1" style="right:20px;position: fixed;bottom: 20px;">
-                  <a href="checkout.html" class="btn-floating btn-large waves-effect waves-light purple-color btn z-depth-1"">
+                   <a href="checkout.html" class="btn-floating btn-large waves-effect waves-light btn z-depth-1" style="background-color: #8D8E8C !important;">
                     <!-- <i class="ion-android-cart"></i> -->
                     <i class="material-icons md-32">create</i>
                   </a>
@@ -199,17 +182,17 @@
               </div>
             </div>
           </div>
-        </div> 
+        </div>
     </div>
   </body>
 </html>
 
 <script src="js/tmplt/jquery-2.1.0.min.js"></script>
 <script src="js/mftsl/loadhead.js"></script>
-<script src="js/tmplt/jquery.swipebox.min.js"></script>   
-<script src="js/tmplt/jquery.smoothState.min.js"></script> 
-<script src="js/tmplt/materialize.min.js"></script> 
-<script src="js/tmplt/swiper.min.js"></script>  
+<script src="js/tmplt/jquery.swipebox.min.js"></script>
+<script src="js/tmplt/jquery.smoothState.min.js"></script>
+<script src="js/tmplt/materialize.min.js"></script>
+<script src="js/tmplt/swiper.min.js"></script>
 <script src="js/tmplt/jquery.mixitup.min.js"></script>
 <script src="js/tmplt/masonry.min.js"></script>
 <script src="js/tmplt/chart.min.js"></script>
@@ -225,14 +208,20 @@
   var mail      = "";
   var username  = "";
 
-  if( screen.width <= 880 ) 
+  if( screen.width <= 880 )
   {
     var url = "http://www.maufutsal.com/api_mobile/mosapi.php";
   }
   else
   {
-    var url = "http://localhost/maufutsal_website/api_mobile/mosapi.php";
+    var url = "http://www.maufutsal.com/api_mobile/mosapi.php";
   }
+
+  var initApps = function()
+  {
+    fetchEmail();
+    $("#endapps").click(exitApps);
+  };
 
   function onBackButton()
   {
@@ -243,12 +232,12 @@
     // do nothing
   }
 
-  function errorCB(err) 
+  function errorCB(err)
   {
     alert("Error processing SQL: "+err.code);
   }
 
-  function successCB() 
+  function successCB()
   {
     //alert("success!");
   }
@@ -258,15 +247,6 @@
     db.transaction(clearAllTable, errorCB, successCB);
   }
 
-  var initApps = function()
-  {
-    fetchEmail();
-    $("#endapps").click(exitApps);
-  };
-
-  $(document).ready(initApps);
-
-
   function fetchEmail()
   {
     db.transaction
@@ -275,18 +255,22 @@
       {
         tx.executeSql
         (
-          'SELECT mail FROM maumail',
+          'SELECT mail,name FROM maumail',
           [],
           function(tx,results)
           {
             var len = results.rows.length;
             if(len>0)
             {
-              for (var i = 0; i < len; i++) 
+              for (var i = 0; i < len; i++)
               {
-                mail = results.rows.item(i)['mail'];
+                mail       = results.rows.item(i)['mail'];
+                username   = results.rows.item(i)['name'];
+                var initial = username.substring(0, 1);
+                $("#initial").html(initial);
                 fetchInformation();
-                $("#mail").html(mail); 
+                $("#mail").html(mail);
+                $("#username").html(username);
               }
             }
           }, errorCB
@@ -313,8 +297,13 @@
           {
             if(JSONObject[key]["type"]==="resgetinfouser")
             {
-              username = JSONObject[key]["name"];
-              $("#username").html(username);
+              var name  = JSONObject[key]["name"];
+              var email = JSONObject[key]["email"];
+              var genre = JSONObject[key]["genre"];
+
+              $("#name_profile").html(name);
+              $("#mail_profile").html(email);
+              $("#cat_profile").html(genre);
             }
           }
         }
@@ -335,5 +324,5 @@
     document.location.href="index.html";
   }
 
-
+  $(document).ready(initApps);
 </script>

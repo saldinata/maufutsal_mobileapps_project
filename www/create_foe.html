@@ -26,15 +26,21 @@
     <link href="css/swipebox.min.css?4884491531235" rel="stylesheet" type="text/css">
     <link href="css/style.css?4884491531235" rel="stylesheet" type="text/css">
 
+
+    <link rel="stylesheet" href="css/bootstrap.min.css?4884491531235" />
+    <!-- <link rel="stylesheet" href="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/css/material.min.css" /> -->
+    <link rel="stylesheet" href="plugins/calendar/css/bootstrap-material-datetimepicker.css?4884491531235" />
+
     <script type="text/javascript" src="phonegap.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
+
   </head>
 
    <body>
     <div class="m-scene">
       <div>
          <!-- Left Sidebar -->
-         <ul id="slide-out-left" class="side-nav collapsible" style="background-color: rgb(33, 74, 40); width: 250px;">
+         <ul id="slide-out-left" class="side-nav collapsible" style="background-color: rgb(33, 74, 40);width: 250px;">
            <li>
              <div class="sidenav-header" style="background-color: rgb(46, 125, 50) !important">
                <div class="nav-avatar">
@@ -122,21 +128,73 @@
       <div id="content" class="page" style="background-color: #f7f7f7;">
         <!-- Toolbar -->
         <div id="toolbar" class="green-800-color">
-          <div class="open-left" id="open-left" data-activates="slide-out-left">
+          <!-- <div class="open-left" id="open-left" data-activates="slide-out-left">
             <i class="ion-android-menu"></i>
-          </div>
-          <span class="title">Catatan Transaksi Reservasi</span>
+          </div> -->
+          <a href="list_foe.html">
+            <div class="open-left" id="#" data-activates="slide-out-left">
+              <i class="material-icons">arrow_back</i>
+            </div>
+          </a>
+          <span class="title">Buat Lawan Tanding</span>
         </div>
 
         <!-- Hero Header -->
         <div class="hero-header animated fadein" style="margin-top:0px;">
-            <div id="listhistory">
+          <div id="court_info" style="display:none;">
+            <div class="card activity" style="padding: 0px;">
+              <div class="form-inputs">
+                <h4>Informasi</h4>
+                <p style="font-size: 12px;" id="futsalname">Nama Lapangan</p>
+                <p style="font-size: 12px;" id="futsaladdr">deskripsi</p>
+              </div>
             </div>
-        </div>
+            <br>
+          </div>
 
+          <!-- <div class="card activity" style="padding: 0px;"> -->
+            <div class="form-inputs">
+              <!-- <h4>Data Konfirmasi</h4> -->
+
+              <!-- <div class="input-field"> -->
+               <label style="padding-left: 10px;font-size:13px;font-weight:700;color:#212121;">Nama Team</label>
+               <input style="padding-left: 10px;" type="text" id="nama_team">
+              <!-- </div> -->
+
+               <label style="padding-left: 10px;font-size:13px;font-weight:700;color:#212121;">Jam</label>
+               <input style="padding-left: 10px;" type="text" id="jam">
+
+               <label style="padding-left: 10px;font-size:13px;font-weight:700;color:#212121;">Provinsi</label>
+               <select class="browser-default" id="provinsi" style="border: 1px solid #cecdcd;">
+                  <option value="" disabled selected>Pilihan</option>
+               </select>
+               <br>
+
+               <label style="padding-left: 10px;font-size:13px;font-weight:700;color:#212121;">Kota</label>
+               <select class="browser-default" id="kota" style="border: 1px solid #cecdcd;">
+                 <option value="" disabled selected>Pilihan</option>
+               </select>
+               <br>
+
+               <label style="padding-left: 10px;font-size:13px;font-weight:700;color:#212121;">Nama Lapangan</label>
+               <select class="browser-default" id="nama_lapangan" style="    border: 1px solid #cecdcd;">
+                 <option value="" disabled selected>Pilihan</option>
+               </select>
+               <br>
+
+            </div>
+          <!-- </div> -->
+
+
+          <div style="margin:0 auto;text-align: center;">
+            <a class="waves-effect waves-light btn-large" href="#" id="create_btn" style="background-color: #38930d !important; width: 90%; margin-left: 5%; margin-right: 5%;">
+               Simpan
+            </a>
+          </div>
+
+        </div>
       </div>
     </div>
-
   </body>
 </html>
 
@@ -150,15 +208,32 @@
 <script src="js/tmplt/chart.min.js"></script>
 <script src="js/tmplt/functions.js"></script>
 
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/material.min.js"></script>
+<script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+<!-- <script type="text/javascript" src="plugins/calendar/js/bootstrap-material-datetimepicker.js"></script> -->
+
+
 <script type="text/javascript">
 
   document.addEventListener("deviceready", onDeviceReady, false);
   document.addEventListener("backbutton", onBackButton, false);
 
-  var db        = window.openDatabase("maufutsal_mail", "1.0", "maufutsal_mail", 200000);
-  var url       = "";
-  var mail      = "";
-  var username  = "";
+  var db            = window.openDatabase("maufutsal_mail", "1.0", "maufutsal_mail", 200000);
+  var bookcode      = "";
+  var url           = "";
+  var previouspage  = "";
+  var username      = "";
+
+  var initApps = function()
+  {
+    loadProvince();
+    fetchEmail();
+    $("#provinsi").change(loadCity);
+    $("#kota").change(loadField);
+    $("#create_btn").click(saveCreateFoe);
+    $("#endapps").click(exitApps);
+  }
 
   if( screen.width <= 880 )
   {
@@ -169,23 +244,14 @@
     var url = "http://www.maufutsal.com/api_mobile/mosapi.php";
   }
 
-
-  var initApps = function()
-  {
-    fetchMail();
-    clearTable();
-    $("#endapps").click(exitApps);
-  }
-
+  $(document).ready(initApps);
 
   function onBackButton()
   {
-    // do nothing
   }
 
   function onDeviceReady()
   {
-    // do nothing
   }
 
   function errorCB(err)
@@ -203,45 +269,10 @@
     db.transaction(clearAllTable, errorCB, successCB);
   }
 
-  $(document).ready(initApps);
-  $(document).on("click","span[id^=detail]", goToDetail);
 
-
-  function goToDetail()
-  {
-    var numbering = parseInt(this.id.replace("detail",""),10);
-    var bookcode  = $("#bookcode"+numbering).val();
-
-    console.log(bookcode);
-
-    db.transaction
-    (
-      function(tx)
-      {
-        tx.executeSql('INSERT INTO booktransaction (bookcode) VALUES ("' + bookcode + '")');
-      }, errorCB, gotoDetailPage
-    );
-  }
-
-  function gotoDetailPage()
-  {
-    document.location.href="detail_reservtransaction.html";
-  }
-
-  function clearTable()
+  function fetchEmail()
   {
     db.transaction
-    (
-      function(tx)
-      {
-        tx.executeSql('DELETE FROM booktransaction');
-      }, errorCB, successCB
-    );
-  }
-
-  function fetchMail()
-  {
-     db.transaction
     (
       function (tx)
       {
@@ -258,8 +289,6 @@
               {
                 mail = results.rows.item(i)['mail'];
                 fetchInformation();
-                console.log(mail);
-                loadHistoryTrx();
                 $("#mail").html(mail);
               }
             }
@@ -299,96 +328,164 @@
     return false;
   }
 
-  function loadHistoryTrx()
+  function loadCity()
   {
-    var content = "";
+     var content = "";
+     var id_province = document.getElementById('provinsi').value;
 
-    $.ajax
-    ({
+     $("#kota").html("");
+
+     $.ajax
+     ({
         type        : "POST",
         url         : url,
-        data        : "type=reqshowtrxreservhistory"+"&mail="+mail,
+        data        : "type=reqcity"+"&id_province="+id_province,
         dataType    : "JSON",
         contentType : "application/x-www-form-urlencoded; charset=UTF-8",
         cache       : false,
         success     : function(JSONObject)
         {
-          var count = 0;
-          for(var key in JSONObject)
-          {
-            count++;
-
-            if(JSONObject.hasOwnProperty(key))
-            {
-              if(JSONObject[key]["type"]==="resshowtrxreservhistory")
+           content+="<option value=\"\">Pilihan</option>";
+           ;
+           for(var key in JSONObject)
+           {
+              if(JSONObject.hasOwnProperty(key))
               {
-                if(JSONObject[key]["bookcode"]!="-")
-                {
-                  var fieldname = JSONObject[key]["fieldname"];
-                  var date      = JSONObject[key]["datetimereserv"];
-                  var bookcode  = JSONObject[key]["bookcode"];
+                 if(JSONObject[key]["type"]==="rescity")
+                 {
+                    var id_city   = JSONObject[key]["id_city"];
+                    var nama_kota = JSONObject[key]["nama_city"];
 
-                  if(JSONObject[key]["state"]==="1")
+                    content+= "<option value=\""+id_city+"\">"+nama_kota+"</option>";
+                 }
+              }
+           }
+
+           $("#kota").append(content);
+        }
+     });
+     return false;
+
+  }
+
+
+  function loadProvince()
+  {
+     var content = "";
+     $("#provinsi").html("");
+
+      $.ajax
+      ({
+         type        : "POST",
+         url         : url,
+         data        : "type=reqallprovince",
+         dataType    : "JSON",
+         contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+         cache       : false,
+         success     : function(JSONObject)
+         {
+            content+="<option value=\"\">Pilihan</option>";
+            ;
+            for(var key in JSONObject)
+            {
+               if(JSONObject.hasOwnProperty(key))
+               {
+                  if(JSONObject[key]["type"]==="resallprovince")
                   {
-                    content += "<div class=\"single-news\" style=\"border-left: 8px solid #C62828;border-bottom:none;\">";
-                    content += "<h4 class=\"single-news-title\">";
-                    content += "<a href=\"#\">"+fieldname+"</a>";
-                    content += "</h4>";
-                    content += "<span class=\"single-news-channel\" style=\"font-size:13px\"> Tanggal Reservasi : "+date+"</span>";
-                    content += "<br>";
-                    content += "<span class=\"single-news-channel\" style=\"font-weight:700;font-size:13px;color:#eb1231;\">Status : Proses Konfirmasi</span>";
-                    content += "<span class=\"single-news-category\" id=\"detail"+count+"\">DETAIL</span>";
-                    content += "<input type=\"hidden\" value=\""+bookcode+"\" autocomplete=\"off\" readonly id=\"bookcode"+count+"\">";
-                    content += "<div class=\"clr\">";
-                    content += "</div>";
-                    content += "</div>";
-                    content += "<hr style=\"margin-left: 10px;margin-right: 10px;opacity: 0.2;\">";
-                  }
-                  else if(JSONObject[key]["state"]==="2")
-                  {
-                    content += "<div class=\"single-news\" style=\"border-left: 8px solid #2e7d32;border-bottom:none;\">";
-                    content += "<h4 class=\"single-news-title\">";
-                    content += "<a href=\"#\">"+fieldname+"</a>";
-                    content += "</h4>";
-                    content += "<span class=\"single-news-channel\" style=\"font-size:13px\"> Tanggal Reservasi : "+date+"</span>";
-                    content += "<br>";
-                    content += "<span class=\"single-news-channel\" style=\"font-weight:700;font-size:13px;color:#198a21;\">Status : Pembayaran Telah Diterima</span>";
-                    content += "<span class=\"single-news-category\" id=\"detail"+count+"\">DETAIL</span>";
-                    content += "<input type=\"hidden\" value=\""+bookcode+"\" autocomplete=\"off\" readonly id=\"bookcode"+count+"\">";
-                    content += "<div class=\"clr\">";
-                    content += "</div>";
-                    content += "</div>";
-                    content += "<hr style=\"margin-left: 10px;margin-right: 10px;opacity: 0.2;\">";
-                  }
-                  else
-                  {
+                     var id_province   = JSONObject[key]["id_province"];
+                     var nama_provinsi = JSONObject[key]["nama_province"];
 
+                     content+= "<option value=\""+id_province+"\">"+nama_provinsi+"</option>";
                   }
+               }
+            }
 
-                }
-                else
-                {
+            $("#provinsi").append(content);
+         }
+      });
+      return false;
+  }
 
-                }
+  function loadField()
+  {
+     var content = "";
+     $("#nama_lapangan").html("");
+
+     var id_city = document.getElementById('kota').value;
+
+     $.ajax
+     ({
+        type        : "POST",
+        url         : url,
+        data        : "type=reqfield"+"&id_city="+id_city,
+        dataType    : "JSON",
+        contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+        cache       : false,
+        success     : function(JSONObject)
+        {
+           content+="<option value=\"\">Pilihan</option>";
+           ;
+           for(var key in JSONObject)
+           {
+              if(JSONObject.hasOwnProperty(key))
+              {
+                 if(JSONObject[key]["type"]==="resfield")
+                 {
+                    var id_field   = JSONObject[key]["id_field"];
+                    var nama_field = JSONObject[key]["nama_field"];
+
+                    content+= "<option value=\""+id_field+"\">"+nama_field+"</option>";
+                 }
+              }
+           }
+
+           $("#nama_lapangan").append(content);
+        }
+     });
+     return false;
+  }
+
+
+
+  function saveCreatefoe()
+  {
+    var team_name    = document.getElementById('nama_team').value;
+    var time_play    = document.getElementById('jam').value;
+    var id_province  = document.getElementById('provinsi').value;
+    var id_city      = document.getElementById('kota').value;
+    var id_field     = document.getElementById('nama_lapangan').value;
+
+    $.ajax
+    ({
+      type        : "POST",
+      url         : url,
+      data        : "type=reqcreatefoe"+"&team_name="+team_name+"&time_play="+time_play+"&id_province="+id_province+"&id_city="+id_city+"&id_field="+id_field,
+      dataType    : "JSON",
+      contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+      cache       : false,
+      success     : function(JSONObject)
+      {
+        for(var key in JSONObject)
+        {
+          if(JSONObject.hasOwnProperty(key))
+          {
+            if(JSONObject[key]["type"]==="rescreatefoe")
+            {
+              if(JSONObject[key]["success"]==="true")
+              {
+                alert("Cari lawan tanding berhasil dibangun");
+              }
+              else
+              {
+                 alert("Cari lawan tanding tidak berhasil dibangun");
               }
             }
           }
-
-          $("#listhistory").append(content);
         }
+      }
     });
     return false;
   }
 
-  function clearAllTable(tx)
-  {
-    tx.executeSql('DROP TABLE IF EXISTS maumail');
-    tx.executeSql('DROP TABLE IF EXISTS courtregtbl');
-    tx.executeSql('DROP TABLE IF EXISTS booktransaction');
-    tx.executeSql('DROP TABLE IF EXISTS courtregtbl');
-    tx.executeSql('DROP TABLE IF EXISTS compdata');
-    tx.executeSql('DROP TABLE IF EXISTS pagedata');
 
-    document.location.href="index.html";
-  }
 </script>

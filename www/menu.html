@@ -11,7 +11,7 @@
     <!-- <meta content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport"> -->
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="yes" name="apple-touch-fullscreen">
-    
+
     <!-- Fonts -->
     <link href="css/familyfonts.css?4884491531235" rel='stylesheet' type='text/css'>
 
@@ -26,115 +26,116 @@
     <link href="css/swipebox.min.css?4884491531235" rel="stylesheet" type="text/css">
     <link href="css/style.css?4884491531235" rel="stylesheet" type="text/css">
 
-    <script type="text/javascript" src="phonegap.js"></script> 
+    <script type="text/javascript" src="phonegap.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
   </head>
 
-   <body>
+   <body style="background-color: rgba(4, 4, 4, 0.8);">
     <div class="m-scene">
       <div>
-        <!-- Left Sidebar -->
-        <ul id="slide-out-left" class="side-nav collapsible purple-900-transparant-color">
-          <li>
-            <div class="sidenav-header purple-900-color">
-              <div class="nav-avatar">
-                <img class="circle avatar" src="img/user.jpg?4884491531235" alt="">
-                <div class="avatar-body">
-                  <h3 style="font-size:18px;" id="username"></h3>
-                  <p id="mail"></p>
-                </div>
-              </div>
-            </div>
-          </li>
+         <!-- Left Sidebar -->
+         <ul id="slide-out-left" class="side-nav collapsible" style="background-color: rgb(33, 74, 40); width: 250px;">
+           <li>
+             <div class="sidenav-header" style="background-color: rgb(46, 125, 50) !important">
+               <div class="nav-avatar">
+                  <p style="margin-top: 10px;height: 54px;width: 54px;border-radius: 100%;background-color: rgb(121, 191, 17);padding-left: 8%;padding-top: 1%;color: #F5F5F5;font-size: 30px;margin-left: 10px;margin-bottom: 10px;box-shadow: 2px 2px 3px 0px #0c621b;" id="initial"></p>
+                 <!-- <img class="circle avatar" src="img/user.jpg?4884491531235" alt=""> -->
+                 <div class="avatar-body">
+                   <h3 style="font-size:18px;" id="username"></h3>
+                   <p id="mail"></p>
+                 </div>
+               </div>
+             </div>
+           </li>
 
-          <li>
-              <a href="#" class="no-child" id="endapps">
-              <i class="material-icons md-18">directions_run</i> Akhiri Aplikasi</a>
-          </li>
-          <li>
-            <div class="collapsible-header">
-              <i class="material-icons md-18">build</i> Pengaturan
-              <span class="badge">
-                <i class="material-icons md-18">keyboard_arrow_down</i>
-              </span>
-            </div>
-            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
-              <ul class="collapsible">
-                <li>
-                  <a href="changepass.html" style="color:#fff;">Ganti Password</a>
-                  <a href="profile.html" style="color:#fff;">Data profil</a>
-                </li>
-              </ul>
-            </div>
-          </li>
+           <li>
+               <a href="#" class="no-child" id="endapps">
+               <i class="material-icons md-18">directions_run</i> Akhiri Aplikasi</a>
+           </li>
+           <li>
+             <div class="collapsible-header" style="padding: 5%;">
+               <i class="material-icons md-18">build</i> Pengaturan
+               <span class="badge">
+                 <i class="material-icons md-18">keyboard_arrow_down</i>
+               </span>
+             </div>
+             <div class="collapsible-body" style="background-color: rgb(37, 80, 44);">
+               <ul class="collapsible">
+                 <li>
+                   <a href="changepass.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Ganti Password</a>
+                   <a href="profile.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Data profil</a>
+                 </li>
+               </ul>
+             </div>
+           </li>
 
-          <li>
-              <a href="menu.html" class="no-child">
-              <i class="material-icons md-18">apps</i> Dashboard</a>
-          </li>
+           <li>
+               <a href="menu.html" class="no-child">
+               <i class="material-icons md-18">apps</i> Dashboard</a>
+           </li>
 
-          <li>
-            <div class="collapsible-header">
-              <i class="material-icons md-18">store_mall_directory</i> Reservasi Lapangan
-              <span class="badge">
-                <i class="material-icons md-18">keyboard_arrow_down</i>
-              </span>
-            </div>
-            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
-              <ul class="collapsible">
-                <li>
-                  <a href="list_reservation.html" style="color:#fff;">Mulai Reservasi</a>
-                  <a href="confirm_reservpayment.html" style="color:#fff;">Konfirmasi Pembayaran</a>
-                  <a href="history_reservation.html" style="color:#fff;">Catatan Reservasiku</a>
-                </li>
-              </ul>
-            </div>
-          </li>
+           <li>
+             <div class="collapsible-header" style="padding: 5%;">
+               <i class="material-icons md-18">store_mall_directory</i> Reservasi Lapangan
+               <span class="badge">
+                 <i class="material-icons md-18">keyboard_arrow_down</i>
+               </span>
+             </div>
+             <div class="collapsible-body" style="background-color: rgb(37, 80, 44);">
+               <ul class="collapsible">
+                 <li>
+                   <a href="list_reservation.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Mulai Reservasi</a>
+                   <a href="confirm_reservpayment.html" style="color:#fff;    margin: 0 16% 0 10%;font-size: 95%;">Konfirmasi Pembayaran</a>
+                   <a href="history_reservation.html" style="color:#fff;    margin: 0 16% 0 10%;font-size: 95%;">Catatan Reservasiku</a>
+                 </li>
+               </ul>
+             </div>
+           </li>
 
-          <li>
-            <div class="collapsible-header">
-              <i class="material-icons md-18">event_note</i> Turnamen
-              <span class="badge">
-                <i class="material-icons md-18">keyboard_arrow_down</i>
-              </span>
-            </div>
-            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
-              <ul class="collapsible">
-                <li>
-                  <a href="list_turnamen.html" style="color:#fff;">Mulai Daftar</a>
-                  <a href="confirm_turnamenpayment.html" style="color:#fff;">Konfirmasi Pembayaran</a>
-                  <a href="history_turnamen.html" style="color:#fff;">Catatan Turnamen</a>
-                </li>
-              </ul>
-            </div>
-          </li>
+           <li>
+             <div class="collapsible-header" style="padding: 5%;">
+               <i class="material-icons md-18">event_note</i> Turnamen
+               <span class="badge">
+                 <i class="material-icons md-18">keyboard_arrow_down</i>
+               </span>
+             </div>
+             <div class="collapsible-body" style="background-color: rgb(37, 80, 44);">
+               <ul class="collapsible">
+                 <li>
+                   <a href="list_turnamen.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Mulai Daftar</a>
+                   <a href="confirm_turnamenpayment.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Konfirmasi Pembayaran</a>
+                   <a href="history_turnamen.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Catatan Turnamen</a>
+                 </li>
+               </ul>
+             </div>
+           </li>
 
 
-          <!-- <li>
-            <div class="collapsible-header">
-              <i class="material-icons md-18">group</i> Ajang Tanding
-              <span class="badge white">
-                <i class="material-icons md-18">keyboard_arrow_down</i>
-              </span>
-            </div>
-            <div class="collapsible-body">
-              <ul class="collapsible">
-                <li>
-                  <a href="#">Mulai Daftar</a>
-                  <a href="#">Konfirmasi Pembayaran</a>
-                  <a href="#">Catatan Ajang Tanding</a>
-                </li>
-              </ul>
-            </div>
-          </li> -->
+           <li>
+             <div class="collapsible-header" style="padding: 5%;">
+               <i class="material-icons md-18">face</i> Lawan Tanding
+               <span class="badge">
+                 <i class="material-icons md-18">keyboard_arrow_down</i>
+               </span>
+             </div>
+             <div class="collapsible-body" style="background-color: rgb(37, 80, 44);">
+               <ul class="collapsible">
+                 <li>
+                   <a href="list_foe.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Daftar Lawan</a>
+                   <a href="info_foe.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Info Lawan</a>
+                 </li>
+               </ul>
+             </div>
+           </li>
 
-          <li>
-              <a href="privacy.html" class="no-child">
-              <i class="material-icons">comment</i> Ketentuan Privacy</a>
-          </li>
-        </ul>
-        <!-- End of Sidebars -->
-      </div> 
+
+           <li>
+               <a href="privacy.html" class="no-child">
+               <i class="material-icons">comment</i> Ketentuan Privacy</a>
+           </li>
+         </ul>
+         <!-- End of Sidebars -->
+      </div>
 
       <div id="content" class="page">
         <!-- Toolbar -->
@@ -144,25 +145,25 @@
           </div>
           <span class="title">Maufutsal</span>
         </div>
-        
+
         <!-- Hero Header -->
         <div class="hero-header">
-          <!-- Slider -->         
+          <!-- Slider -->
           <div class="swiper-container slider m-b-10" style="margin-bottom: 0px !important">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <img src="img/product.jpg" alt="">
-              </div>
-              <div class="swiper-slide">
-                <img src="img/product2.jpg" alt="">
-              </div>
+            <div  id="sliders" class="swiper-wrapper">
+               <!-- <div class="swiper-slide">
+                 <img src="img/product.jpg" alt="">
+               </div>
+               <div class="swiper-slide">
+                 <img src="img/product2.jpg" alt="">
+               </div> -->
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
           </div>
           <!-- End of Slider -->
 
-          <div class="card" style="background-color:rgba(19, 11, 56, 0.9); margin:0px;color:#e6e6e6;">
+          <div class="card" style="background-color: rgb(32, 33, 32); margin:0px;color:#e6e6e6;">
             <div class="c-widget">
               <div class="c-widget-figure">
                 <i class="material-icons md-48 grey500" style="color:#e6e6e6;">query_builder</i>
@@ -187,26 +188,6 @@
               </div>
             </div>
           </div>
-
-
-          <!-- <div class="card m-t-10" style="background-color: #f5f5f5; margin:0px;">
-            <div class="c-widget">
-              <div class="c-widget-figure">
-                <i class="material-icons md-48 grey500">group</i>
-              </div>
-              <div class="c-widget-body">
-                <p class="m-0">Ajang Tanding</p>
-                <p class="small m-0">0 Kegiatan</p>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- Floating Action Button -->
-          <!-- <div class="floating-button scrollable-fab animated bouncein delay-3">
-            <a href="checkout.html" class="btn-floating btn-large waves-effect waves-light accent-color btn z-depth-1">
-              <i class="ion-android-cart"></i>
-            </a>
-          </div> -->
         </div>
       </div>
     </div>
@@ -215,17 +196,17 @@
 
 <script src="js/tmplt/jquery-2.1.0.min.js"></script>
 <script src="js/mftsl/loadhead.js"></script>
-<script src="js/tmplt/jquery.swipebox.min.js"></script>   
-<script src="js/tmplt/jquery.smoothState.min.js"></script> 
-<script src="js/tmplt/materialize.min.js"></script> 
-<script src="js/tmplt/swiper.min.js"></script>  
+<script src="js/tmplt/jquery.swipebox.min.js"></script>
+<script src="js/tmplt/jquery.smoothState.min.js"></script>
+<script src="js/tmplt/materialize.min.js"></script>
+<script src="js/tmplt/swiper.min.js"></script>
 <script src="js/tmplt/jquery.mixitup.min.js"></script>
 <script src="js/tmplt/masonry.min.js"></script>
 <script src="js/tmplt/chart.min.js"></script>
 <script src="js/tmplt/functions.js"></script>
 
 <script type="text/javascript">
-  
+
   document.addEventListener("backbutton", onBackButton, false);
   document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -234,15 +215,16 @@
   var mail  = "";
   var flag_login  = 0;
   var username    = "";
+  var content     = "";
 
 
-  if( screen.width <= 880 ) 
+  if( screen.width <= 880 )
   {
     var url = "http://www.maufutsal.com/api_mobile/mosapi.php";
   }
   else
   {
-    var url = "http://localhost/maufutsal_website/api_mobile/mosapi.php";
+    var url = "http://www.maufutsal.com/api_mobile/mosapi.php";
   }
 
 
@@ -256,12 +238,12 @@
     StatusBar.backgroundColorByHexString("#164418");
   }
 
-  function errorCB(err) 
+  function errorCB(err)
   {
     alert("Error processing SQL: "+err.code);
   }
 
-  function successCB() 
+  function successCB()
   {
     //alert("success!");
   }
@@ -273,12 +255,43 @@
 
   var initApps = function()
   {
+    $("#sliders").html("");
     fetchEmail();
+    getAllImageSlider();
     $("#endapps").click(exitApps);
   };
 
 
-  $(document).ready(initApps);
+  function getAllImageSlider()
+  {
+      $.ajax
+      ({
+         type        : "POST",
+         url         : url,
+         data        : "type=reqallslider",
+         dataType    : "JSON",
+         cache       : false,
+         success     : function(JSONObject)
+         {
+            for(var key in JSONObject)
+            {
+               if(JSONObject.hasOwnProperty(key))
+               {
+                  if(JSONObject[key]["type"]==="resallslider")
+                  {
+                     var url_pict = JSONObject[key]["link"];
+
+                     content += "<div class=\"swiper-slide\"><img src=\""+url_pict+"\" alt=\"\" style=\"height:300px;\"></div>";
+                     $("#sliders").append(content);
+                  }
+               }
+            }
+         }
+      });
+      return false;
+ }
+
+
 
   function fetchEmail()
   {
@@ -295,13 +308,13 @@
             var len = results.rows.length;
             if(len>0)
             {
-              for (var i = 0; i < len; i++) 
+              for (var i = 0; i < len; i++)
               {
                 mail = results.rows.item(i)['mail'];
                 fetchInformation();
                 getLatestLogin();
                 getNumberOfPaymentConfirm();
-                $("#mail").html(mail); 
+                $("#mail").html(mail);
               }
             }
           }, errorCB
@@ -329,6 +342,8 @@
             if(JSONObject[key]["type"]==="resgetinfouser")
             {
               username = JSONObject[key]["name"];
+              var initial = username.substring(0, 1);
+              $("#initial").html(initial);
               $("#username").html(username);
             }
           }
@@ -393,7 +408,7 @@
                 $("#time").html(time);
                 console.log(date);
                 console.log(time);
-              } 
+              }
             }
           }
         }
@@ -401,7 +416,7 @@
     });
     return false;
   }
-  
+
 
   function getNumberOfPaymentConfirm()
   {
@@ -443,5 +458,7 @@
 
      document.location.href="index.html";
   }
+
+  $(document).ready(initApps);
 
 </script>

@@ -117,20 +117,20 @@
          <!-- End of Sidebars -->
       </div>
 
-      <div id="content" class="page" style="background-color: #f7f7f7;">
+      <div id="content" class="page" style="background-color: #f7f7f7;    margin-top: 45%;">
         <!-- Toolbar -->
         <div id="toolbar" class="green-800-color">
           <div class="open-left" id="open-left" data-activates="slide-out-left">
             <i class="ion-android-menu"></i>
           </div>
-          <span class="title">Reservasi</span>
+          <span class="title">Lawan Tanding</span>
 
            <!-- Search bar -->
           <div class="p-10" style="background-color: #2e7d32; position: fixed; z-index: 1; margin: auto; width:100%;">
             <nav class="white" style="box-shadow: none;">
               <div class="nav-wrapper">
                   <div class="input-field">
-                    <input type="search" placeholder="Nama Lapangan atau Kota" required style="color:#848484;" id="search_data" />
+                    <input type="search" placeholder="Nama Kota" required style="color:#848484;" id="search_data" />
                     <label for="search" id="search_btn"><i class="ion-android-search" style="color:#828282;"></i></label>
                     <i class="ion-android-close" style="color:#828282;display:none;" id="clear_btn"></i>
                   </div>
@@ -141,7 +141,7 @@
 
 
         <div id="default_view">
-          <div class="hero-header animated fadein" style="margin-top:40px;">
+          <!-- <div class="hero-header animated fadein" style="margin-top:40px;">
               <div class="blog-card" style="margin: 0;">
                 <div class="share p-20 center-align" style="background:#489f26;height: 150px;">
 
@@ -160,22 +160,26 @@
                 </div>
               </div>
               <br>
-          </div>
+          </div> -->
         </div>
 
         <div id="search_result_city_id">
 
         </div>
 
-
+        <div class="p-10" style="background-color: #2e7d32; position: fixed; z-index: 1; margin: auto; width:100%;bottom:0;">
+          <nav class="" style="box-shadow: none;background-color: #2e7d32;">
+            <div class="nav-wrapper">
+                <a class="btn-large m-b-10 width-100" href="#" style="background-color: #46a63c !important;" id="create_btn">Buat Lawan Tanding</a>
+            </div>
+          </nav>
+        </div>
       </div>
     </div>
   </body>
 </html>
 
 <script src="js/tmplt/jquery-2.1.0.min.js?4884491531235"></script>
-<!-- <script src="js/apps/list_reservation.js?4884491531235"></script> -->
-<!-- <script src="https://code.jquery.com/jquery-3.1.1.slim.js"></script> -->
 <script src="js/tmplt/jquery.swipebox.min.js?4884491531235"></script>
 <script src="js/tmplt/jquery.smoothState.min.js?4884491531235"></script>
 <script src="js/tmplt/materialize.min.js?4884491531235"></script>
@@ -226,9 +230,10 @@
   {
     clearTable();
     hideClearBtn();
-    regcalc();
     fetchEmail();
+    getAllListFoe();
     $("#endapps").click(exitApps);
+    $("#create_btn").click(gotoCreateFoe);
     $("#search_data").focus(focusOnSearchData);
     $("#search_data").focusout(focusOutSearchData);
     $("#clear_btn").click(clearSearchField);
@@ -275,6 +280,37 @@
         );
       },errorCB,successCB
     );
+  }
+
+  function getAllListFoe()
+  {
+     $.ajax
+     ({
+        type         : "POST",
+        url          : url,
+        data         : "type=reqallfoe",
+        dataType     : "JSON",
+        contentType  : "application/x-www-form-urlencoded; charset=UTF-8",
+        cache        : false,
+        success      : function(JSONObject)
+        {
+           for(var key in JSONObject)
+           {
+             if(JSONObject.hasOwnProperty(key))
+             {
+                if(JSONObject[key]["type"]==="resallfoe")
+                {
+
+                }
+             }
+          }
+        }
+     });
+  }
+
+  function gotoCreateFoe()
+  {
+     document.location.href="create_foe.html";
   }
 
   function fetchInformation()
@@ -364,35 +400,6 @@
   {
     document.getElementById("search_data").value="";
     $("#search_data").focus();
-  }
-
-
-  function regcalc()
-  {
-    $.ajax
-    ({
-      type        : "POST",
-      url         : url,
-      data        : "type=reqcalcallfield",
-      dataType    : "JSON",
-      contentType : "application/x-www-form-urlencoded; charset=UTF-8",
-      cache       : false,
-      async       : false,
-      success     : function(JSONObject)
-      {
-        for(var key in JSONObject)
-        {
-          if(JSONObject.hasOwnProperty(key))
-          {
-            if(JSONObject[key]["type"]==="rescalcallfield")
-            {
-              $("#total_field").html(JSONObject[key]["total_field"]);
-            }
-          }
-        }
-      }
-    });
-    return false;
   }
 
 

@@ -27,7 +27,7 @@
     <link href="css/swipebox.min.css?4884491531235" rel="stylesheet" type="text/css">
     <link href="css/style.css?4884491531235" rel="stylesheet" type="text/css">
 
-    <script type="text/javascript" src="phonegap.js?4884491531235"></script> 
+    <script type="text/javascript" src="phonegap.js?4884491531235"></script>
     <script type="text/javascript" src="cordova.js?4884491531235"></script>
 
   </head>
@@ -35,108 +35,91 @@
    <body style="background: #f5f5f5;">
     <div class="m-scene">
       <div>
-        <!-- Left Sidebar -->
-        <ul id="slide-out-left" class="side-nav collapsible purple-900-transparant-color">
-          <li>
-            <div class="sidenav-header purple-900-color">
-              <div class="nav-avatar">
-                <img class="circle avatar" src="img/user.jpg?4884491531235" alt="">
-                <div class="avatar-body">
-                  <h3 style="font-size:18px;" id="username"></h3>
-                  <p id="mail"></p>
-                </div>
-              </div>
-            </div>
-          </li>
+         <!-- Left Sidebar -->
+         <ul id="slide-out-left" class="side-nav collapsible" style="background-color: rgb(33, 74, 40); width: 250px;">
+           <li>
+             <div class="sidenav-header" style="background-color: rgb(46, 125, 50) !important">
+               <div class="nav-avatar">
+                  <p style="margin-top: 10px;height: 54px;width: 54px;border-radius: 100%;background-color: rgb(121, 191, 17);padding-left: 8%;padding-top: 1%;color: #F5F5F5;font-size: 30px;margin-left: 10px;margin-bottom: 10px;box-shadow: 2px 2px 3px 0px #0c621b;" id="initial"></p>
+                 <!-- <img class="circle avatar" src="img/user.jpg?4884491531235" alt=""> -->
+                 <div class="avatar-body">
+                   <h3 style="font-size:18px;" id="username"></h3>
+                   <p id="mail"></p>
+                 </div>
+               </div>
+             </div>
+           </li>
 
-          <li>
-              <a href="#" class="no-child" id="endapps">
-              <i class="material-icons md-18">directions_run</i> Akhiri Aplikasi</a>
-          </li>
-          <li>
-            <div class="collapsible-header">
-              <i class="material-icons md-18">build</i> Pengaturan
-              <span class="badge">
-                <i class="material-icons md-18">keyboard_arrow_down</i>
-              </span>
-            </div>
-            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
-              <ul class="collapsible">
-                <li>
-                  <a href="changepass.html" style="color:#fff;">Ganti Password</a>
-                  <a href="profile.html" style="color:#fff;">Data profil</a>
-                </li>
-              </ul>
-            </div>
-          </li>
+           <li>
+               <a href="#" class="no-child" id="endapps">
+               <i class="material-icons md-18">directions_run</i> Akhiri Aplikasi</a>
+           </li>
+           <li>
+             <div class="collapsible-header" style="padding: 5%;">
+               <i class="material-icons md-18">build</i> Pengaturan
+               <span class="badge">
+                 <i class="material-icons md-18">keyboard_arrow_down</i>
+               </span>
+             </div>
+             <div class="collapsible-body" style="background-color: rgb(37, 80, 44);">
+               <ul class="collapsible">
+                 <li>
+                   <a href="changepass.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Ganti Password</a>
+                   <a href="profile.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Data profil</a>
+                 </li>
+               </ul>
+             </div>
+           </li>
 
-          <li>
-              <a href="menu.html" class="no-child">
-              <i class="material-icons md-18">apps</i> Dashboard</a>
-          </li>
+           <li>
+               <a href="menu.html" class="no-child">
+               <i class="material-icons md-18">apps</i> Dashboard</a>
+           </li>
 
-          <li>
-            <div class="collapsible-header">
-              <i class="material-icons md-18">store_mall_directory</i> Reservasi Lapangan
-              <span class="badge">
-                <i class="material-icons md-18">keyboard_arrow_down</i>
-              </span>
-            </div>
-            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
-              <ul class="collapsible">
-                <li>
-                  <a href="list_reservation.html" style="color:#fff;">Mulai Reservasi</a>
-                  <a href="confirm_reservpayment.html" style="color:#fff;">Konfirmasi Pembayaran</a>
-                  <a href="history_reservation.html" style="color:#fff;">Catatan Reservasiku</a>
-                </li>
-              </ul>
-            </div>
-          </li>
+           <li>
+             <div class="collapsible-header" style="padding: 5%;">
+               <i class="material-icons md-18">store_mall_directory</i> Reservasi Lapangan
+               <span class="badge">
+                 <i class="material-icons md-18">keyboard_arrow_down</i>
+               </span>
+             </div>
+             <div class="collapsible-body" style="background-color: rgb(37, 80, 44);">
+               <ul class="collapsible">
+                 <li>
+                   <a href="list_reservation.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Mulai Reservasi</a>
+                   <a href="confirm_reservpayment.html" style="color:#fff;    margin: 0 16% 0 10%;font-size: 95%;">Konfirmasi Pembayaran</a>
+                   <a href="history_reservation.html" style="color:#fff;    margin: 0 16% 0 10%;font-size: 95%;">Catatan Reservasiku</a>
+                 </li>
+               </ul>
+             </div>
+           </li>
 
-          <li>
-            <div class="collapsible-header">
-              <i class="material-icons md-18">event_note</i> Turnamen
-              <span class="badge">
-                <i class="material-icons md-18">keyboard_arrow_down</i>
-              </span>
-            </div>
-            <div class="collapsible-body" style="background-color: rgb(50, 18, 89);">
-              <ul class="collapsible">
-                <li>
-                  <a href="list_turnamen.html" style="color:#fff;">Mulai Daftar</a>
-                  <a href="confirm_turnamenpayment.html" style="color:#fff;">Konfirmasi Pembayaran</a>
-                  <a href="history_turnamen.html" style="color:#fff;">Catatan Turnamen</a>
-                </li>
-              </ul>
-            </div>
-          </li>
+           <li>
+             <div class="collapsible-header" style="padding: 5%;">
+               <i class="material-icons md-18">event_note</i> Turnamen
+               <span class="badge">
+                 <i class="material-icons md-18">keyboard_arrow_down</i>
+               </span>
+             </div>
+             <div class="collapsible-body" style="background-color: rgb(37, 80, 44);">
+               <ul class="collapsible">
+                 <li>
+                   <a href="list_turnamen.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Mulai Daftar</a>
+                   <a href="confirm_turnamenpayment.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Konfirmasi Pembayaran</a>
+                   <a href="history_turnamen.html" style="color:#fff;margin: 0 16% 0 10%;font-size: 95%;">Catatan Turnamen</a>
+                 </li>
+               </ul>
+             </div>
+           </li>
 
 
-          <!-- <li>
-            <div class="collapsible-header">
-              <i class="material-icons md-18">group</i> Ajang Tanding
-              <span class="badge white">
-                <i class="material-icons md-18">keyboard_arrow_down</i>
-              </span>
-            </div>
-            <div class="collapsible-body">
-              <ul class="collapsible">
-                <li>
-                  <a href="#">Mulai Daftar</a>
-                  <a href="#">Konfirmasi Pembayaran</a>
-                  <a href="#">Catatan Ajang Tanding</a>
-                </li>
-              </ul>
-            </div>
-          </li> -->
-
-          <li>
-              <a href="privacy.html" class="no-child">
-              <i class="material-icons">comment</i> Ketentuan Privacy</a>
-          </li>
-        </ul>
-        <!-- End of Sidebars -->
-      </div> 
+           <li>
+               <a href="privacy.html" class="no-child">
+               <i class="material-icons">comment</i> Ketentuan Privacy</a>
+           </li>
+         </ul>
+         <!-- End of Sidebars -->
+      </div>
 
       <div id="content" class="page">
         <!-- Toolbar -->
@@ -147,7 +130,7 @@
           <span class="title">Ganti Password</span>
         </div>
           <img src="img/password.svg?4884491531235" alt="">
-          <!-- Form Inputs --> 
+          <!-- Form Inputs -->
           <div class="form-inputs" style="background:rgba(11, 56, 18, 0.9);height: 100%;">
             <h4 class="center"></h4>
             <div>
@@ -160,7 +143,7 @@
                 <input id="new_pass" type="password" class="validate" autocomplete="off">
                 <label for="new_pass">Password Baru</label>
               </div>
-            
+
             <br><br>
             <a class="btn-large green-800-color m-b-10 width-100" href="#" id="chapass_btn">Ganti Password</a>
           </div>
@@ -171,10 +154,10 @@
 
 <script src="js/tmplt/jquery-2.1.0.min.js"></script>
 <script src="js/mftsl/loadhead.js"></script>
-<script src="js/tmplt/jquery.swipebox.min.js"></script>   
-<script src="js/tmplt/jquery.smoothState.min.js"></script> 
-<script src="js/tmplt/materialize.min.js"></script> 
-<script src="js/tmplt/swiper.min.js"></script>  
+<script src="js/tmplt/jquery.swipebox.min.js"></script>
+<script src="js/tmplt/jquery.smoothState.min.js"></script>
+<script src="js/tmplt/materialize.min.js"></script>
+<script src="js/tmplt/swiper.min.js"></script>
 <script src="js/tmplt/jquery.mixitup.min.js"></script>
 <script src="js/tmplt/masonry.min.js"></script>
 <script src="js/tmplt/chart.min.js"></script>
@@ -190,13 +173,13 @@
   var mail      = "";
   var username  = "";
 
-  if( screen.width <= 880 ) 
+  if( screen.width <= 880 )
   {
     var url = "http://www.maufutsal.com/api_mobile/mosapi.php";
   }
   else
   {
-    var url = "http://localhost/maufutsal_website/api_mobile/mosapi.php";
+    var url = "http://www.maufutsal.com/api_mobile/mosapi.php";
   }
 
   function onBackButton()
@@ -208,12 +191,12 @@
     // do nothing
   }
 
-  function errorCB(err) 
+  function errorCB(err)
   {
     alert("Error processing SQL: "+err.code);
   }
 
-  function successCB() 
+  function successCB()
   {
     //alert("success!");
   }
@@ -284,11 +267,11 @@
             var len = results.rows.length;
             if(len>0)
             {
-              for (var i = 0; i < len; i++) 
+              for (var i = 0; i < len; i++)
               {
                 mail = results.rows.item(i)['mail'];
                 fetchInformation();
-                $("#mail").html(mail); 
+                $("#mail").html(mail);
               }
             }
           }, errorCB
@@ -316,6 +299,8 @@
             if(JSONObject[key]["type"]==="resgetinfouser")
             {
               username = JSONObject[key]["name"];
+              var initial = username.substring(0, 1);
+              $("#initial").html(initial);
               $("#username").html(username);
             }
           }

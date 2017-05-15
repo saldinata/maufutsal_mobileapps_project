@@ -127,36 +127,6 @@
     $("#registration").click(directToRegistrationPage);
     $("#forgot_btn").click(directForgotPass);
     window.facebookConnectPlugin.browserInit('1876879935863759');
-
-    facebookConnectPlugin.getLoginStatus(
-    function(result)
-    {
-      console.log("current status: " + JSON.stringify(result.status));
-      var status = JSON.stringify(result.status);
-
-      if(status=="\"connected\"")
-      {
-        facebookConnectPlugin.api("me?fields=id,name,email",["public_profile"],
-        function(response)
-        {
-          console.log("name :"+response.name);
-          console.log("email :"+response.email);
-          console.log("id :"+response.id);
-
-          emailfb   = response.email;
-          username  = response.name;
-          iduser    = response.id;
-
-          //checkEmailRegistered();
-          insertDB();
-
-        },fetchFBDataError);
-      }
-      else
-      {
-        //show dialog page
-      }
-    },fetchFBDataError);
   }
 
   function onBackButton()
@@ -193,8 +163,9 @@
           username  = response.name;
           iduser    = response.id;
 
-          //checkEmailRegistered();
-          insertDB();
+          insertDB(emailfb,username);
+          console.log("Warning ! your facebook is still active");
+          checkEmailRegistered();
 
         },fetchFBDataError);
       }
@@ -297,19 +268,18 @@
     document.location.href="menu.html";
   }
 
-  function insertDB()
+  function insertDB(email, name)
   {
+
     db.transaction
     (
       function(tx)
       {
-        tx.executeSql("INSERT INTO maumail (mail,name) VALUES (?,?)",[emailfb,username]);
-      }, errorCB, fbLoginSuccess
+        tx.executeSql("INSERT INTO maumail (mail,name) VALUES (?,?)",[email,name]);
+      }, errorCB, successCB
     );
   }
 
-
-  $(document).ready(initApps);
 
   function checkEmailRegistered()
   {
@@ -324,8 +294,9 @@
       cache       : false,
       success     : function(JSONObject)
       {
-        for(var key in JSONObject)
-        {
+         console.log(JSON.stringify(JSONObject));
+         for(var key in JSONObject)
+         {
           if(JSONObject.hasOwnProperty(key))
           {
             if(JSONObject[key]["type"]==="reschecklogin")
@@ -338,9 +309,6 @@
                   (
                     function(tx)
                     {
-                      /*
-                      tx.executeSql('INSERT INTO maumail (mail) VALUES ("' + emailfb+ '")');
-                      */
                       tx.executeSql("INSERT INTO maumail (mail,name) VALUES (?,?)",[emailfb,username]);
                     }, errorCB, enterApps
                   );
@@ -352,9 +320,6 @@
                   (
                     function(tx)
                     {
-                      /*
-                      tx.executeSql('INSERT INTO maumail (mail) VALUES ("' + emailfb+ '")');
-                      */
                       tx.executeSql("INSERT INTO maumail (mail,name) VALUES (?,?)",[emailfb,username]);
                     }, errorCB, enterMenuApps
                   );
@@ -373,7 +338,7 @@
                 document.location.href="genrereg.html";
               }
             }
-          }
+         }
         }
       }
     });
@@ -431,7 +396,7 @@
                         }
                         else
                         {
-                          //nothing
+                          console.log("We check that your device has not login yet");
                         }
                       }
                     }
@@ -452,8 +417,12 @@
 
   function checklogin()
   {
-    var email = document.getElementById('email').value;
-    var pass  = document.getElementById('pass').value;
+    var email  = document.getElementById('email').value;
+    var pass   = document.getElementById('pass').value;
+    var flg_ft = "";
+
+    console.log("email address :"+email);
+    console.log("password :"+pass);
 
     $.ajax
     ({
@@ -466,6 +435,8 @@
         async       : false,
         success     : function (JSONObject)
         {
+          console.log(JSON.stringify(JSONObject));
+
           for(var key in JSONObject)
           {
             if(JSONObject.hasOwnProperty(key))
@@ -474,25 +445,33 @@
               {
                 if(JSONObject[key]["result"]==="true")
                 {
+                  flg_ft = JSONObject[key]["flag_ft"];
+
                   if(JSONObject[key]["flag_ft"]==1)
                   {
-                    db.transaction
-                    (
-                      function(tx)
-                      {
-                        tx.executeSql('INSERT INTO maumail (mail) VALUES ("' + email+ '")');
-                      }, errorCB, enterApps
-                    );
+                     $email   = JSONObject[key]["mail"];
+                     $name    = JSONObject[key]["name"];
+
+                     db.transaction
+                     (
+                       function(tx)
+                       {
+                         tx.executeSql("INSERT INTO maumail (mail,name) VALUES (?,?)",[$email,$name]);
+                       }, errorCB, enterApps
+                     );
                   }
                   else
                   {
-                    db.transaction
-                    (
-                      function(tx)
-                      {
-                        tx.executeSql('INSERT INTO maumail (mail) VALUES ("' + email+ '")');
-                      }, errorCB, enterMenuApps
-                    );
+                     $email   = JSONObject[key]["mail"];
+                     $name    = JSONObject[key]["name"];
+
+                     db.transaction
+                     (
+                       function(tx)
+                       {
+                         tx.executeSql("INSERT INTO maumail (mail,name) VALUES (?,?)",[$email,$name]);
+                       }, errorCB, enterMenuApps
+                     );
                   }
                 }
                 else
@@ -506,4 +485,6 @@
     });
     return false;
   }
+
+  $(document).ready(initApps);
 </script>

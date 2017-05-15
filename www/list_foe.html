@@ -139,28 +139,7 @@
           </div>
         </div>
 
-
-        <div id="default_view">
-          <!-- <div class="hero-header animated fadein" style="margin-top:40px;">
-              <div class="blog-card" style="margin: 0;">
-                <div class="share p-20 center-align" style="background:#489f26;height: 150px;">
-
-                  <section style="width: 50%;float: left;padding: 45px 15px;">
-                    <span id="total_field" style="color: #fff;"></span>
-                    <br>
-                    <span style="color: #fff;">Total lapangan</span>
-                  </section>
-
-                  <section style="width: 45%;float: left; padding: 45px 15px; margin: 0px 5px 5px 5px;">
-                    <span id="total_city" style="color: #fff;"></span>
-                    <br>
-                    <span style="color: #fff;">Kota</span>
-                  </section>
-
-                </div>
-              </div>
-              <br>
-          </div> -->
+        <div id="load_first_time">
         </div>
 
         <div id="search_result_city_id">
@@ -240,7 +219,7 @@
     $("#search_btn").click(searchData);
   }
 
-  $(document).on("click", "a[id^=reserv]", gotoReservationProcess);
+  $(document).on("click", "a[id^=join]", joinMatch);
 
 
   function clearTable()
@@ -284,11 +263,14 @@
 
   function getAllListFoe()
   {
+     var contents = "";
+     var count    = 0;
+
      $.ajax
      ({
         type         : "POST",
         url          : url,
-        data         : "type=reqallfoe",
+        data         : "type=reqallfoe"+"&mail="+mail,
         dataType     : "JSON",
         contentType  : "application/x-www-form-urlencoded; charset=UTF-8",
         cache        : false,
@@ -300,10 +282,46 @@
              {
                 if(JSONObject[key]["type"]==="resallfoe")
                 {
+                   count++;
 
+                   var nama_team       = JSONObject[key]["nama_team"];
+                   var jam             = JSONObject[key]["jam"];
+                   var provinsi        = JSONObject[key]["provinsi"];
+                   var kota            = JSONObject[key]["kota"];
+                   var lapangan        = JSONObject[key]["lapangan"];
+                   var creator         = JSONObject[key]["creator"];
+                   var id_cari_lawan   = JSONObject[key]["id_cari_lawan"];
+
+                   contents += "<div class=\"card activity\" style=\"border-left: 8px solid #2e7d32\">";
+                   contents += "<p style=\"font-size: 18px;color: #3d3c3c;font-weight: 600;margin-bottom: 10px;padding-bottom: 10px;border-bottom: 1px solid #d1d1d1;\">"+nama_team+"</p>";
+                   contents += "<span class=\"activity-time text-large text-light\">";
+                   contents += "<span class=\"\" style=\"font-size: 13px;color:#000;\">Rencana Lapangan</span></span>";
+
+                   contents += "<br>";
+                   contents += "<span class=\"\" style=\"color: rgba(52, 53,52, 0.66);font-weight: 600;\">"+lapangan+"</span>";
+
+                   contents += "<br>";
+                   contents += "<span class=\"\" style=\"color: rgba(8, 8, 8, 0.52);font-size: 12px;font-weight: 600;\">Waktu mulai bertanding : "+jam+"</span>";
+
+                   contents += "<br>";
+                   contents += "<span class=\"activity-time text-small text-light\">";
+                   contents += "<span class=\"\" style=\"color: #474845;font-size: 11px;\">"+kota+" - "+provinsi+"</span>";
+                   contents += "</span>";
+                   contents += "<br />";
+                   contents += "<br />";
+
+                   contents += "<div class=\"left-align\">";
+                   contents += "<a class=\"waves-effect waves-light \" href=\"#\" id=\"join"+count+"\" style=\"background-color: rgba(255, 255, 255, 0);\" >Join Sekarang</a>&nbsp;";
+                   contents += "<input type=\"hidden\" value=\""+id_cari_lawan+"\" id=\"id_cari_lawan"+count+"\" readonly autocomplete=\"off\"/>";
+                   contents += "</div>";
+                   contents += "</div>";
+                   contents += "<br>";
                 }
              }
           }
+         var spaceEnd = "<br><br><br><br>";
+         $("#load_first_time").html(contents+spaceEnd);
+
         }
      });
   }
@@ -344,29 +362,51 @@
   }
 
 
-  function gotoReservationProcess()
+  function joinMatch()
   {
-    var numbering = parseInt(this.id.replace("reserv", ""), 10);
-    var court_reg = $("#coreg"+numbering).val();
+    var numbering       = parseInt(this.id.replace("join", ""), 10);
+    var id_cari_lawan   = $("#id_cari_lawan"+numbering).val();
 
-    console.log("court reg : "+court_reg);
+    console.log("id_cari_lawan : "+id_cari_lawan);
 
-    db.transaction
-    (
-      function(tx)
+    $.ajax
+    ({
+      type        : "POST",
+      url         : url,
+      data        : "type=reqjoinmatch"+"&id="+id_cari_lawan+"&mail="+mail,
+      dataType    : "JSON",
+      contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+      cache       : false,
+      success     : function(JSONObject)
       {
-        tx.executeSql('INSERT INTO courtregtbl (courtreg) VALUES ("' + court_reg+ '")');
-      }, errorCB, successCB
-    );
-    document.location.href="mulai_reserv.html";
-  }
+         for(var key in JSONObject)
+         {
+            if(JSONObject.hasOwnProperty(key))
+            {
+               if(JSONObject[key]["type"]==="resjoinmatch")
+               {
+                  if(JSONObject[key]["state"]==="true")
+                  {
+                     alert("Anda berhasil join");
+                     getAllListFoe();
+                  }
+                  else
+                  {
+                     alert("Anda tidak berhasil join");
+                     getAllListFoe();
+                  }
+               }
+            }
+         }
+      }
+    });
 
+  }
 
   function focusOnSearchData()
   {
     showClearBtn();
   }
-
 
   function focusOutSearchData()
   {
@@ -407,225 +447,83 @@
   {
     var data_search     = document.getElementById('search_data').value;
     var city_id         = [];
-    var court_reg       = [];
     var state           = "";
     var count           = 0;
     var contents        = "";
-    var show_available  = 0;
 
-    $("#key_search").html(data_search);
+    console.log(data_search);
 
     if(data_search=="")
     {
-      regcalc();
-      $("#default_view").css("display","block");
-      $("#search_result_view").css("display","none");
+      $("#load_first_time").html("");
+      getAllListFoe();
     }
     else
     {
-      $("#default_view").css("display","block");
-      $("#search_result_view").css("display","block");
-
       $.ajax
       ({
         type        : "POST",
         url         : url,
-        data        : "type=reqsearchfield"+"&key="+data_search,
+        data        : "type=reqsearchfoe"+"&key="+data_search,
         dataType    : "JSON",
         contentType : "application/x-www-form-urlencoded; charset=UTF-8",
         cache       : false,
         async       : false,
         success     : function(JSONObject)
         {
-          for(var key in JSONObject)
-          {
-            if(JSONObject.hasOwnProperty(key))
-            {
-              if(JSONObject[key]["type"]==="ressearchfield")
-              {
-                if(JSONObject[key]["found"]==="yes")
+           for(var key in JSONObject)
+           {
+             if(JSONObject.hasOwnProperty(key))
+             {
+                if(JSONObject[key]["type"]==="ressearchfoe")
                 {
-                  $("#not_found").hide();
+                   count++;
 
-                  if((JSONObject[key]["court_reg"])==="-")
-                  {
-                    var city_id_data  = JSONObject[key]["id_kota"];
-                    console.log(city_id_data);
-                    city_id[count]    = city_id_data;
-                    state             = 0;
-                    count++;
-                  }
-                  else
-                  {
-                    var court_reg_data  = JSONObject[key]["court_reg"];
-                    court_reg[count]    = court_reg_data;
-                    state               = 1;
-                    count++;
-                  }
+                   var nama_team       = JSONObject[key]["nama_team"];
+                   var jam             = JSONObject[key]["jam"];
+                   var provinsi        = JSONObject[key]["provinsi"];
+                   var kota            = JSONObject[key]["kota"];
+                   var lapangan        = JSONObject[key]["lapangan"];
+                   var creator         = JSONObject[key]["creator"];
+                   var id_cari_lawan   = JSONObject[key]["id_cari_lawan"];
+
+                   contents += "<div class=\"card activity\" style=\"border-left: 8px solid #2e7d32\">";
+                   contents += "<p style=\"font-size: 18px;color: #3d3c3c;font-weight: 600;margin-bottom: 10px;padding-bottom: 10px;border-bottom: 1px solid #d1d1d1;\">"+nama_team+"</p>";
+                   contents += "<span class=\"activity-time text-large text-light\">";
+                   contents += "<span class=\"\" style=\"font-size: 13px;color:#000;\">Rencana Lapangan</span></span>";
+
+                   contents += "<br>";
+                   contents += "<span class=\"\" style=\"color: rgba(52, 53,52, 0.66);font-weight: 600;\">"+lapangan+"</span>";
+
+                   contents += "<br>";
+                   contents += "<span class=\"\" style=\"color: rgba(8, 8, 8, 0.52);font-size: 12px;font-weight: 600;\">Waktu mulai bertanding : "+jam+"</span>";
+
+
+                   contents += "<br>";
+                   contents += "<span class=\"activity-time text-small text-light\">";
+                   contents += "<span class=\"\" style=\"color: #474845;font-size: 11px;\">"+kota+" - "+provinsi+"</span>";
+                   contents += "</span>";
+                   contents += "<br />";
+                   contents += "<br />";
+
+                   contents += "<div class=\"left-align\">";
+                   contents += "<a class=\"waves-effect waves-light \" href=\"#\" id=\"join"+count+"\" style=\"background-color: rgba(255, 255, 255, 0);\" >Join Sekarang</a>&nbsp;";
+                   contents += "<input type=\"hidden\" value=\""+id_cari_lawan+"\" id=\"id_cari_lawan"+count+"\" readonly autocomplete=\"off\"/>";
+                   contents += "</div>";
+                   contents += "</div>";
+                   contents += "<br>";
                 }
-                else
-                {
-                  state    = -1;
-                  contents = "";
-                  $("#search_result_city_id").html(contents);
-                  $("#not_found").show();
-                }
-              }
-            }
+             }
           }
-
-          console.log("date state ="+state);
-
-          if(state == 0)
-          {
-            $.ajax
-            ({
-              type        : "POST",
-              url         : url,
-              data        : "type=reqshowfieldlistcityid"+"&city_id="+city_id,
-              dataType    : "JSON",
-              contentType : "application/x-www-form-urlencoded; charset=UTF-8",
-              cache       : false,
-              async       : false,
-              success     : function(JSONObject)
-              {
-                var count = 0;
-
-                for(var key in JSONObject)
-                {
-                  count++;
-
-                  if(JSONObject.hasOwnProperty(key))
-                  {
-                    if(JSONObject[key]["type"]==="resshowfieldlistcityid")
-                    {
-                      if(JSONObject[key]["found"]==="yes")
-                      {
-                        show_available  = 1;
-
-                        var court_name  = JSONObject[key]["court_name"];
-                        var court_reg   = JSONObject[key]["court_reg"];
-                        var price       = JSONObject[key]["normal_price"];
-                        var city        = JSONObject[key]["id_kota"];
-
-                        $("#field_not_registered").hide();
-
-                        contents += "<div class=\"card activity\" style=\"border-left: 8px solid #eb6f0f;\">";
-                        contents += "<p style=\"font-size: 18px;color:#000;\">"+court_name+"</p>";
-                        contents += "<span class=\"activity-time text-large text-light\">";
-                        contents += "<span class=\"\" style=\"font-size: 15px;color:#000;\">Harga Mulai IDR "+price+"</span></span>";
-                        contents += "<br>";
-                        contents += "<span class=\"activity-time text-small text-light\">";
-                        contents += "<span class=\"\" style=\"color:#000;\">"+city+"</span>";
-                        contents += "</span>";
-                        contents += "<br><br>";
-
-                        contents += "<div class=\"left-align\">";
-                        // contents += "<a class=\"waves-effect waves-light white-color\" href=\"#\">Info</a>&nbsp;&nbsp;&nbsp;";
-
-                        contents += "<a class=\"waves-effect waves-light white-color\" href=\"#\" id=\"reserv"+count+"\" >Pesan</a>&nbsp;";
-                        contents += "<input type=\"hidden\" value=\""+court_reg+"\" id=\"coreg"+count+"\" readonly autocomplete=\"off\"/>";
-                        contents += "</div>";
-                        contents += "</div>";
-                        contents += "<br>";
-
-                        $("#search_result_city_id").html(contents);
-                      }
-                      else
-                      {
-                        if(show_available==1)
-                        {
-                          //nothing to show
-                        }
-                        else
-                        {
-                          contents = "";
-                          $("#search_result_city_id").html(contents);
-                          $("#field_not_registered").show();
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-             });
-             return false;
-          }
-          else
-          {
-            $.ajax
-            ({
-              type        : "POST",
-              url         : url,
-              data        : "type=reqshowfieldlistcourtreg"+"&court_reg="+court_reg,
-              dataType    : "JSON",
-              contentType : "application/x-www-form-urlencoded; charset=UTF-8",
-              cache       : false,
-              async       : false,
-              success     : function(JSONObject)
-              {
-                for(var key in JSONObject)
-                {
-                  if(JSONObject.hasOwnProperty(key))
-                  {
-                    if(JSONObject[key]["type"]==="resshowfieldlistcourtreg")
-                    {
-                      if(JSONObject[key]["found"]==="yes")
-                      {
-                        show_available  = 1;
-                        var court_name  = JSONObject[key]["court_name"];
-                        var price       = JSONObject[key]["normal_price"];
-                        var city        = JSONObject[key]["id_kota"];
-
-                        $("#field_not_registered").hide();
-
-                        contents += "<div class=\"card activity\" style=\"border-left: 8px solid #eb6f0f;\">";
-                        contents += "<p style=\"font-size: 18px;color:#000;\">"+court_name+"</p>";
-                        contents += "<span class=\"activity-time text-large text-light\">";
-                        contents += "<span class=\"\" style=\"font-size: 15px;color:#000;\">Harga Mulai IDR "+price+"</span></span>";
-                        contents += "<br>";
-                        contents += "<span class=\"activity-time text-small text-light\">";
-                        contents += "<span class=\"\" style=\"color:#000;\">"+city+"</span>";
-                        contents += "</span>";
-                        contents += "<br><br>";
-
-                        contents += "<div class=\"left-align\">";
-                        // contents += "<a class=\"waves-effect waves-light white-color\" href=\"#\">Info</a>&nbsp;&nbsp;&nbsp;";
-
-                        contents += "<a class=\"waves-effect waves-light white-color\" href=\"#\" id=\"reserv"+count+"\" >Pesan</a>&nbsp;";
-                        contents += "<input type=\"hidden\" value=\""+court_reg+"\" id=\"coreg"+count+"\" readonly autocomplete=\"off\"/>";
-                        contents += "</div>";
-                        contents += "</div>";
-                        contents += "<br>";
-
-                        $("#search_result_city_id").html(contents);
-                      }
-                      else
-                      {
-
-                        if(show_available==1)
-                        {
-                          //nothing to show
-                        }
-                        else
-                        {
-                          contents = "";
-                          $("#search_result_city_id").html(contents);
-                          $("#field_not_registered").show();
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            });
-            return false;
-          }
+         var spaceEnd = "<br><br><br><br>";
+         $("#load_first_time").html(contents+spaceEnd);
         }
       });
       return false;
     }
   }
+
+
 
   function clearAllTable(tx)
   {

@@ -190,6 +190,7 @@
             <a class="waves-effect waves-light btn-large" href="#" id="create_btn" style="background-color: #38930d !important; width: 90%; margin-left: 5%; margin-right: 5%;">
                Simpan
             </a>
+
           </div>
 
         </div>
@@ -224,6 +225,7 @@
   var url           = "";
   var previouspage  = "";
   var username      = "";
+  var mail          = "";
 
   var initApps = function()
   {
@@ -288,6 +290,7 @@
               for (var i = 0; i < len; i++)
               {
                 mail = results.rows.item(i)['mail'];
+                console.log(mail);
                 fetchInformation();
                 $("#mail").html(mail);
               }
@@ -447,19 +450,20 @@
 
 
 
-  function saveCreatefoe()
+  function saveCreateFoe()
   {
     var team_name    = document.getElementById('nama_team').value;
     var time_play    = document.getElementById('jam').value;
     var id_province  = document.getElementById('provinsi').value;
     var id_city      = document.getElementById('kota').value;
     var id_field     = document.getElementById('nama_lapangan').value;
+    var email        = mail;
 
     $.ajax
     ({
       type        : "POST",
       url         : url,
-      data        : "type=reqcreatefoe"+"&team_name="+team_name+"&time_play="+time_play+"&id_province="+id_province+"&id_city="+id_city+"&id_field="+id_field,
+      data        : "type=reqcreatefoe"+"&team_name="+team_name+"&time_play="+time_play+"&id_province="+id_province+"&id_city="+id_city+"&id_field="+id_field+"&email="+email,
       dataType    : "JSON",
       contentType : "application/x-www-form-urlencoded; charset=UTF-8",
       cache       : false,
@@ -474,6 +478,11 @@
               if(JSONObject[key]["success"]==="true")
               {
                 alert("Cari lawan tanding berhasil dibangun");
+                document.getElementById('nama_team').value="";
+                document.getElementById('jam').value="";
+                document.getElementById('provinsi').value="";
+                document.getElementById('kota').value="";
+                document.getElementById('nama_lapangan').value="";
               }
               else
               {

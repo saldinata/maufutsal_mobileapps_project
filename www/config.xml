@@ -3,13 +3,13 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.apps"
-        version   = "1.0.0">
+        id        = "com.maufutsalcs.application"
+        version   = "1.1.1">
 
-    <name>Maufutsal CS</name>
+    <name>Maufutsal</name>
 
     <description>
-        Maufutsal Apps For Client Side
+        Maufutsal
     </description>
 
     <author href="http://maufutsal.com" email="info@maufutsal.com">
